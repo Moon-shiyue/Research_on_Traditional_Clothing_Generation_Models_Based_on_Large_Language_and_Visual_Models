@@ -1,0 +1,22 @@
+# 外部下载的大型数据集（通过 tools/download_*.py 重新下载）
+data/downloads/
+data/images/patterns/
+data/images/relics/
+data/images/crawled/
+data/images/hanfu/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.eggs/
+*.egg-info/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
