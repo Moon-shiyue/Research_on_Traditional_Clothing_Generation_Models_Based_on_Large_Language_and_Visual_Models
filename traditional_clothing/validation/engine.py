@@ -73,9 +73,15 @@ class ValidationEngine:
     # ── 内部实现 ────────────────────────────────────────────────
 
     def _build_context(self, garment) -> Dict[str, Any]:
-        """从 FullGarment 实例提取评估所需的上下文字典。"""
-        return {
-            "dynasty":      getattr(garment, "dynasty", None),
+        """从服装实例提取评估所需的上下文字典。
+
+        兼容两种服装表示：
+          1. 属性式（FullGarment）：garment.collar / garment.sleeve / ...
+          2. 组合式（GarmentComposer）：部件存放在 garment.components 列表，
+             这里按 component_type 自动归类推导。
+        """
+        ctx = {
+            "dynasty":      self._normalize_dynasty(getattr(garment, "dynasty", None)),
             "collar":       getattr(garment, "collar", None),
             "sleeve":       getattr(garment, "sleeve", None),
             "skirt":        getattr(garment, "skirt", None),
@@ -86,6 +92,42 @@ class ValidationEngine:
             "components":   getattr(garment, "components", []),
             "garment":      garment,
         }
+        # 组合式表示：从 components 按 component_type 归类推导
+        components = ctx["components"]
+        if components and all(v is None or v == [] for v in
+                              (ctx["collar"], ctx["sleeve"], ctx["skirt"])):
+            from garment_components.base import ComponentType
+            collar = sleeve = skirt = None
+            accessories: List[Any] = []
+            for comp in components:
+                ctype = getattr(comp, "component_type", None)
+                if ctype == ComponentType.COLLAR:
+                    collar = collar or comp
+                elif ctype == ComponentType.SLEEVE:
+                    sleeve = sleeve or comp
+                elif ctype == ComponentType.SKIRT:
+                    skirt = skirt or comp
+                else:
+                    accessories.append(comp)
+            ctx["collar"] = ctx["collar"] or collar
+            ctx["sleeve"] = ctx["sleeve"] or sleeve
+            ctx["skirt"] = ctx["skirt"] or skirt
+            ctx["accessories"] = accessories or ctx["accessories"]
+        return ctx
+
+    @staticmethod
+    def _normalize_dynasty(dynasty) -> Optional[str]:
+        """将朝代表示统一为字符串（"明" / "MING"），兼容枚举与字符串输入。"""
+        if dynasty is None:
+            return None
+        if isinstance(dynasty, str):
+            return dynasty
+        # Dynasty 枚举：优先取 value（中文），否则取 name（英文）
+        value = getattr(dynasty, "value", None)
+        if isinstance(value, str):
+            return value
+        name = getattr(dynasty, "name", None)
+        return str(name) if name else str(dynasty)
 
     def _run_rules(self, ctx: Dict[str, Any],
                    category_filter: Optional[str] = None) -> ValidationReport:

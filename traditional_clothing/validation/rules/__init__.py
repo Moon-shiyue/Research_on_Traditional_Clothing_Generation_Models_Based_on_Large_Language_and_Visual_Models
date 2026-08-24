@@ -6,22 +6,22 @@ ALL_RULES = [
     # === 朝代规则 ===
     {"name": "琵琶袖仅明代可用", "category": "dynasty", "severity": "error",
      "check": lambda ctx: not (ctx.get("sleeve") and "pipa" in str(type(ctx["sleeve"])).lower() and
-                               str(getattr(ctx.get("garment"), "dynasty", "")) not in ["明", "MING"]),
+                               ctx.get("dynasty") not in ["明", "MING"]),
      "message": "琵琶袖是明代特有的袖型，其他朝代不出现。"},
     {"name": "明代立领不宜超过4cm", "category": "dynasty", "severity": "warning",
-     "check": lambda ctx: not (str(getattr(ctx.get("garment"), "dynasty", "")) in ["明", "MING"] and
+     "check": lambda ctx: not (ctx.get("dynasty") in ["明", "MING"] and
                                ctx.get("collar") and getattr(ctx["collar"], "collar_height", 0) > 4),
      "message": "明代立领高度通常2-3cm，不宜超过4cm。"},
     {"name": "唐代齐胸襦裙腰位高于0.75", "category": "dynasty", "severity": "warning",
-     "check": lambda ctx: not (str(getattr(ctx.get("garment"), "dynasty", "")) in ["唐", "TANG"] and
+     "check": lambda ctx: not (ctx.get("dynasty") in ["唐", "TANG"] and
                                ctx.get("skirt") and getattr(ctx["skirt"], "waist_position", 0) < 0.75),
      "message": "唐代齐胸襦裙应将腰位设于0.8以上。"},
     {"name": "宋代应搭配褙子外衣", "category": "dynasty", "severity": "info",
-     "check": lambda ctx: not (str(getattr(ctx.get("garment"), "dynasty", "")) in ["宋", "SONG"] and
+     "check": lambda ctx: not (ctx.get("dynasty") in ["宋", "SONG"] and
                                len(ctx.get("accessories", [])) == 0),
      "message": "宋代女装以褙子为标志性外衣，建议添加。"},
     {"name": "清代不出现琵琶袖", "category": "dynasty", "severity": "error",
-     "check": lambda ctx: not (str(getattr(ctx.get("garment"), "dynasty", "")) in ["清", "QING"] and
+     "check": lambda ctx: not (ctx.get("dynasty") in ["清", "QING"] and
                                ctx.get("sleeve") and "pipa" in str(type(ctx["sleeve"])).lower()),
      "message": "清代不使用琵琶袖，应使用窄袖/箭袖。"},
     {"name": "右衽原则", "category": "dynasty", "severity": "error",

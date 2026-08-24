@@ -47,10 +47,10 @@ data/
 **大小**: 约 50GB+（分批下载）
 
 ```bash
-# 访问 ETH Research Collection 下载
-# 或使用 Python 脚本:
-pip install requests tqdm
-python tools/download_garmentcode.py
+# 访问 ETH Research Collection 下载（约 50GB，分批）
+# 或使用公开数据集工具脚本（TEXMET / 中国女鞋，见 tools/ 目录）:
+pip install datasets huggingface_hub
+python tools/download_public_data.py
 ```
 
 ### 2. Hanfu-Bench — 汉服多模态基准
@@ -114,13 +114,14 @@ with open('data/dataset_index.json', 'r', encoding='utf-8') as f:
 print(f"总条目: {data['total_count']}")
 print(f"朝代分布: {data['statistics']['by_dynasty']}")
 
-# 使用标注工具添加新数据
-from tools.data_annotator import AnnotationManager, GarmentAnnotation
-
-manager = AnnotationManager('data/annotations/images')
-# ...添加标注...
-manager.save()
-manager.print_statistics()
+# 使用标注规范添加新数据（见 annotation_spec.md）
+# 标注写入 data/annotations/ 下的 JSONL 文件：
+#   - training_data.jsonl  文本训练数据（知识库 + 图文条目）
+#   - dsl_training.jsonl   GarmentCode DSL 训练数据
+# 扩充数据的自动化脚本：
+python tools/generate_synthetic_data.py     # 合成文本训练数据
+python tools/synthesize_dsl_data.py         # 合成 DSL 训练数据
+python tools/expand_dataset.py              # 基于知识条目扩充数据集
 ```
 
 ## 📮 数据贡献

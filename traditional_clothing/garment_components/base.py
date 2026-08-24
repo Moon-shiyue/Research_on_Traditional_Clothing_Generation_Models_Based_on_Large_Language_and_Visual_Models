@@ -122,7 +122,10 @@ class SewingEdge:
                  **kwargs):
         """兼容旧 API：接受 edge_id, panel_id, curve, label 等参数。"""
         self.name = name or kwargs.pop('edge_id', '') or kwargs.pop('label', '')
-        self.points = points if points is not None else []
+        # 旧 API：curve 参数为点列表，转换为 points
+        if points is None:
+            points = kwargs.pop('curve', None) or []
+        self.points = points
         self.stitch_type = stitch_type or StitchType.PLAIN_SEAM
         self.seam_allowance = seam_allowance
         self.mate_edge_name = mate_edge_name or kwargs.pop('mate_edge_id', None)
@@ -194,6 +197,22 @@ class SewingEdge:
 
 # ─── 面板 ────────────────────────────────────────────────────────
 
+def _join_curves(curves: List[List[Point2D]]) -> List[Point2D]:
+    """将多条曲线按顺序首尾相接拼接为一个闭合轮廓点列表。
+
+    跳过相邻曲线间的重复端点，保证轮廓连续。
+    """
+    outline: List[Point2D] = []
+    for curve in curves:
+        pts = list(curve)
+        if not pts:
+            continue
+        if outline and outline[-1] == pts[0]:
+            pts = pts[1:]
+        outline.extend(pts)
+    return outline
+
+
 @dataclass
 class Panel:
     """一块裁片/面板 — 由外轮廓和缝边组成。"""
@@ -214,6 +233,11 @@ class Panel:
         """兼容旧 API：接受 panel_id, curves, fabric_type 等参数。"""
         self.name = name or kwargs.pop('panel_id', '')
         self.component_type = component_type or kwargs.pop('comp_type', None) or ComponentType.UPPER_GARMENT
+        # 旧 API：curves 为曲线点列表，首尾相接拼接为 outline
+        if outline is None:
+            curves = kwargs.pop('curves', None) or []
+            if curves:
+                outline = _join_curves(curves)
         self.outline = outline if outline is not None else []
         self.sewing_edges = sewing_edges if sewing_edges is not None else []
         self.internal_lines = internal_lines if internal_lines is not None else []

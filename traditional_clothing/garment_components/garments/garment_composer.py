@@ -11,6 +11,26 @@ class GarmentComposer:
         self.name = name
         self.dynasty = dynasty if isinstance(dynasty, Dynasty) else Dynasty(dynasty)
         self.components = []
+        # 语义化部件引用（供校验引擎等按属性访问）
+        self.collar = None
+        self.sleeve = None
+        self.skirt = None
+        self.accessories = []
+
+    def _register(self, comp):
+        """按部件类型登记语义化引用。"""
+        from ..base import ComponentType
+        ctype = getattr(comp, "component_type", None)
+        if ctype == ComponentType.COLLAR:
+            self.collar = comp
+        elif ctype == ComponentType.SLEEVE:
+            self.sleeve = comp
+        elif ctype == ComponentType.SKIRT:
+            self.skirt = comp
+        else:
+            self.accessories.append(comp)
+        self.components.append(comp)
+        return comp
 
     def add_collar(self, collar_type="cross_collar", **params):
         collar_map = {"cross_collar": CrossCollar, "stand_collar": StandCollar,
@@ -21,7 +41,7 @@ class GarmentComposer:
                 setattr(comp, k, v)
             elif hasattr(comp, 'set_param'):
                 comp.set_param(k, v)
-        self.components.append(comp)
+        self._register(comp)
         return self
 
     def _add_with_params(self, cls, **params):
@@ -29,8 +49,7 @@ class GarmentComposer:
         for k, v in params.items():
             if hasattr(comp, k): setattr(comp, k, v)
             elif hasattr(comp, 'set_param'): comp.set_param(k, v)
-        self.components.append(comp)
-        return comp
+        return self._register(comp)
 
     def add_sleeve(self, sleeve_type="wide_sleeve", **params):
         m = {"wide_sleeve": WideSleeve, "narrow_sleeve": NarrowSleeve, "pipa_sleeve": PipaSleeve}

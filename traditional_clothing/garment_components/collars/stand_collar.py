@@ -115,7 +115,7 @@ class StandCollar(GarmentComponent):
         lines = ["# 立领 (Stand Collar / 立领)", "stand_collar = CollarPanel("]
         for n in ["collar_height", "neck_circumference", "stiffness",
                    "button_position", "collar_flare", "collar_band_top_curve"]:
-            lines.append(f"    {n}={self.params[n].value},")
+            lines.append(f"    {n}={self.get_param(n)},")
         lines.append("    collar_type=\"stand\",")
         lines.append(")")
         return "\n".join(lines)
