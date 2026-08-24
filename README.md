@@ -66,6 +66,11 @@ print("通过:", report.passed)
 | 数据集 | 28 条四级结构化标注 + 518 条训练文本 + 660 条 DSL 数据 | ✅ 完成 |
 | 单元测试 | 91 项（组件构建/规则命中/数据完整性） | ✅ 完成 |
 
+> ⚠️ **关于图片数据**：约 2GB 的爬取/下载图片（文物照片、汉服参考图、纹样素材）
+> **未上传到 GitHub**，仅上传了 `traditional_clothing/tools/` 下的下载脚本。
+> 需要图片时运行脚本即可从原始来源（MET CC0 / Wikimedia Commons / Kaggle 等）重新获取，
+> 详见 [`traditional_clothing/data/README.md`](traditional_clothing/data/README.md)。
+
 ## 📚 参考
 
 - GarmentCode / Design2GarmentCode / GarmentCodeData（ETH Zurich）

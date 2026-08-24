@@ -152,12 +152,15 @@ for r in report.results:
 
 ### 3. 数据集
 
+> ⚠️ **GitHub 仓库未包含图片文件，仅含标注数据与下载脚本。**
+
 - **dataset_index.json**：28 条四级结构化标注（朝代-形制-部件-纹样），
   覆盖汉/魏晋/唐/宋/明/清六代，18 条服装条目 + 10 条纹样条目
 - **training_data.jsonl**：518 条训练文本（知识库 + 图文多模态）
 - **dsl_training.jsonl**：660 条 GarmentCode DSL 训练数据（含体型参数）
 - 图像收集：MET 博物馆（CC0）、Wikimedia Commons、洛阳刺绣、Kaggle 汉服数据集
-  （详见 `data/README.md`，大文件通过脚本重新下载，不纳入 git）
+  约 2GB 图片**未上传 GitHub**，仅提供 `tools/` 下载脚本按需重新获取
+  （详见 `data/README.md` 与 `datasets/README.md`）
 
 ---
 
