@@ -52,8 +52,14 @@ for split in ("train", "valid", "test"):
 ## 图片重新下载方式
 
 ```bash
-# 主力数据集（Kaggle，需 kagglehub + Kaggle API 凭据）
-python tools/download_datasets.py
+# 主力数据集（Kaggle，约 820MB；首次需配置 Kaggle API 凭据）
+pip install kagglehub
+python tools/download_main_dataset.py
+
+# 也可直接使用 kagglehub：
+#   python -c "import kagglehub; print(kagglehub.dataset_download('xiaomeigou/chinesetraditionalclothing'))"
+# 或从 Roboflow 页面手动导出：
+#   https://universe.roboflow.com/ctcdata/chinese-traditional-clothing-dataset
 
 # 可选：其他公开数据集（当前未使用，脚本保留）
 python tools/download_public_data.py    # TEXMET（CC0）、中国传统女鞋
@@ -61,7 +67,8 @@ python tools/crawl_images.py            # Wikimedia Commons / Met Museum
 python tools/download_images.py         # 批量图像下载
 ```
 
-下载后图片存放于 `data/downloads/`（已被 `.gitignore` 排除，不会进入 git 仓库）。
+下载后图片存放于 `data/downloads/kaggle_chinese_clothing/`
+（已被 `.gitignore` 排除，不会进入 git 仓库）。
 
 ## 目录说明
 

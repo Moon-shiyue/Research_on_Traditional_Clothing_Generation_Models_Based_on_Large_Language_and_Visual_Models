@@ -38,13 +38,14 @@ traditional_clothing/
 │   ├── README.md              #   数据集来源/许可/使用注意事项
 │   └── kaggle_annotations/    #   8 类形制 COCO 标注（24,562 框）
 ├── tools/                     # 数据工具脚本
+│   ├── download_main_dataset.py     #   ⭐ 下载主力数据集（Kaggle/Roboflow）
 │   ├── generate_synthetic_data.py   #   合成文本训练数据
 │   ├── synthesize_dsl_data.py       #   合成 GarmentCode DSL 训练数据
 │   ├── expand_dataset.py            #   基于知识条目扩充数据集
-│   ├── crawl_images.py              #   爬取公开图像（Wikimedia/MET）
-│   ├── download_images.py           #   批量下载图像
-│   ├── download_datasets.py         #   下载外部数据集（Kaggle/Roboflow）
-│   ├── download_public_data.py      #   下载公开数据集（HuggingFace）
+│   ├── crawl_images.py              #   爬取公开图像（Wikimedia/MET，可选）
+│   ├── download_images.py           #   批量下载图像（可选）
+│   ├── download_datasets.py         #   外部数据集信息提示 + 知识库校验
+│   ├── download_public_data.py      #   下载公开数据集（HuggingFace，可选）
 │   └── data_scraper.py              #   多源数据抓取器
 ├── tests/                     # 单元测试（pytest，91 项）
 │   ├── test_components.py     #   组件库测试
@@ -159,7 +160,7 @@ for r in report.results:
 - **图像数据（主力）**：**Chinese-Traditional-Clothing Dataset**，6,300 张
   （Roboflow v12）+ **24,562 个 COCO 边界框**，8 类形制标注
   （袄裙/道袍/袍/曲裾/襦裙/直裰/直裾/朱子深衣）——约 820MB，
-  **未上传 GitHub**，通过 `tools/download_datasets.py` 重新获取
+  **未上传 GitHub**，通过 `tools/download_main_dataset.py` 重新获取
 - **dataset_index.json**：28 条四级结构化标注（朝代-形制-部件-纹样），
   覆盖汉/魏晋/唐/宋/明/清六代，18 条服装条目 + 10 条纹样条目
 - **training_data.jsonl**：18 条知识库训练文本（四级结构化标注的文本化）
@@ -168,6 +169,13 @@ for r in report.results:
 ⚠️ **数据使用提示**：主力数据集含 Roboflow 自动增强（约 4.1 倍），独立原图约 1,561 张；
 其中约 40 张原图的增强版本跨越 train/valid/test，训练前建议按原图名重新划分
 （详见 `datasets/README.md`）。数据集许可为 `undefined`，学术使用请注明来源。
+
+### 获取图像数据
+
+```bash
+pip install kagglehub
+python tools/download_main_dataset.py     # 约 820MB，首次需配置 Kaggle API 凭据
+```
 
 ---
 
@@ -187,9 +195,11 @@ python -m pytest tests/ -v
 
 ## 📚 参考
 
-- GarmentCode：服装设计编程语言（ETH Zurich）
-- Design2GarmentCode：服装设计大模型
-- GarmentCodeData：115,000 组 3D 服装 + 纸样数据集
+- [GarmentCode](https://github.com/maria-korosteleva/GarmentCode)：参数化纸样编程框架
+  （ETH Zurich, SIGGRAPH Asia 2023）
+- [Design2GarmentCode](https://style3d.github.io/design2garmentcode/)：多模态大模型驱动的
+  服装程序生成（CVPR 2025）
+- GarmentCodeData：115,000 组 3D 服装 + 纸样数据集（ECCV 2024）
 - ChatHuman：3D 人体生成模型
 - 沈从文《中国古代服饰研究》等形制文献（见 `data/texts/literature/`）
 

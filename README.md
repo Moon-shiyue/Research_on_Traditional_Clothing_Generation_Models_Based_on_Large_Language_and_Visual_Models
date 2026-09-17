@@ -23,6 +23,23 @@
     └── README.md                    # 模块详细文档
 ```
 
+## 🎯 技术路线
+
+本项目参考 **GarmentCode**（ETH Zurich, SIGGRAPH Asia 2023）与
+**Design2GarmentCode**（CVPR 2025）的思路：
+
+```
+设计输入（文字/图片）→ 多模态大模型 → GarmentCode 程序代码 → 参数化纸样/3D 服装
+                          ↑ 微调                     ↑ 形制规则校验（本项目）
+```
+
+1. **参数化纸样表示**：服装以"程序代码"而非像素表示，可直接生成结构正确的纸样
+   （参考 GarmentCode 的 DSL 与 PyGarment 引擎）
+2. **大模型生成代码**：微调多模态大模型，把"明代立领琵琶袖马面裙"这类设计概念
+   转换为可执行的服装程序（参考 Design2GarmentCode 的双 Agent 架构）
+3. **传统服饰领域适配**：构建传统服饰的部件库、配对数据集与形制校验规则，
+   让通用方法能正确生成传统服饰
+
 ## 🎯 项目目标
 
 1. **知识数字化**：将传统服饰的形制知识（朝代、部件、纹样、礼制）编码为
@@ -70,12 +87,22 @@ print("通过:", report.passed)
 > ⚠️ **关于图片数据**：图像数据集为 **Chinese-Traditional-Clothing Dataset**（6,300 张，
 > 约 820MB，Roboflow v12，含 8 类形制 COCO 标注），**未上传到 GitHub**——
 > 仅上传了标注数据与 `traditional_clothing/tools/` 下的下载脚本。
-> 需要图片时运行 `python tools/download_datasets.py` 从原始来源重新获取，
+> 需要图片时运行以下命令从原始来源重新获取：
+>
+> ```bash
+> pip install kagglehub
+> python tools/download_main_dataset.py
+> ```
+>
 > 详见 [`traditional_clothing/datasets/README.md`](traditional_clothing/datasets/README.md)。
 
 ## 📚 参考
 
-- GarmentCode / Design2GarmentCode / GarmentCodeData（ETH Zurich）
+- [GarmentCode](https://github.com/maria-korosteleva/GarmentCode)：参数化纸样编程框架
+  （ETH Zurich, SIGGRAPH Asia 2023）
+- [Design2GarmentCode](https://style3d.github.io/design2garmentcode/)：多模态大模型驱动的
+  服装程序生成（CVPR 2025）
+- GarmentCodeData：115,000 组 3D 服装 + 纸样数据集（ECCV 2024）
 - ChatHuman（3D 人体生成）
 - 沈从文《中国古代服饰研究》等形制文献
 
