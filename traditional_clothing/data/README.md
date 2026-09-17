@@ -10,13 +10,28 @@
 
 | 数据类别 | 规模 | 标注方式 | 来源 | 位置 |
 |----------|------|----------|------|------|
-| **Chinese-Traditional-Clothing Dataset** ⭐ | **6,300 张** / 24,562 标注框 | COCO 目标检测（8 类形制） | [Roboflow Universe](https://universe.roboflow.com/ctcdata/chinese-traditional-clothing-dataset)（v12, 2023） | `downloads/kaggle_chinese_clothing/` |
+| **传统服饰设计数据集** ⭐ | **414 条** | (制版说明, caption, 配置, 代码) 四元配对 | **程序化生成 + 形制校验** | `annotations/traditional_design_dataset.jsonl` |
+| **Chinese-Traditional-Clothing Dataset** | **6,300 张** / 24,562 标注框 | COCO 目标检测（8 类形制） | [Roboflow Universe](https://universe.roboflow.com/ctcdata/chinese-traditional-clothing-dataset)（v12, 2023） | `downloads/kaggle_chinese_clothing/` |
 | **内置知识库（服装）** | 18 条 | 四级结构化标注 | 学术文献编码 | `dataset_index.json` |
 | **内置知识库（纹样）** | 10 条 | 纹样特征标注 | 学术文献编码 | `dataset_index.json` |
 | **训练文本数据** | 18 条 | 文本-标签配对 | 知识库编码 | `annotations/training_data.jsonl` |
-| **DSL 训练数据** | 660 条 | 文本-GarmentCode 配对 | 脚本合成 | `annotations/dsl_training.jsonl` |
+| **DSL 训练数据**（早期版本） | 660 条 | 文本-DSL 配对 | 脚本合成（自造语法，仅供参考） | `annotations/dsl_training.jsonl` |
 
-### 主力数据集详情
+### ⭐ 传统服饰设计数据集（核心产出）
+
+按 **Design2GarmentCode**（CVPR 2025）§3.2.1 Program Learning 方法构建，
+详见 [`annotations/README_traditional_design_dataset.md`](annotations/README_traditional_design_dataset.md)。
+
+| 项目 | 说明 |
+|------|------|
+| 构造方法 | 传统服饰组件（pygarment 实现）→ 枚举合法参数 → **真实生成纸样** → 生成说明/caption/配置/代码 |
+| 有效样本 | **414 条**（另有 72 条被形制规则剔除，如"袖口宽 = 袖根宽"违反 袖口<袖根<膨起） |
+| 组件覆盖 | 马面裙 216 / 琵琶袖 144 / 立领 54 |
+| 可执行性 | **100%**（每条都真实执行过 `assembly()` 产出纸样，`meta.verified = true`） |
+| 监督信号 | 中文制版说明（3 句式）× caption（D2GC 路径标签）× 设计配置 × 目标代码 |
+| 与旧版区别 | `dsl_training.jsonl` 为早期自造 DSL 语法（不可执行）；本数据集**与 GarmentCode 引擎严格对齐** |
+
+### 主力图像数据集详情
 
 - **来源**：[Roboflow Universe — ctcdata/chinese-traditional-clothing-dataset](https://universe.roboflow.com/ctcdata/chinese-traditional-clothing-dataset)
 - **版本**：v12（2023-05-02 导出），官方声明 6,300 张

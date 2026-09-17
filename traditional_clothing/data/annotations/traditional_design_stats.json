@@ -1,0 +1,20 @@
+{
+  "total": 414,
+  "rejected": 72,
+  "by_component": {
+    "mamian-skirt": 216,
+    "pipa-sleeve": 144,
+    "stand-collar": 54
+  },
+  "by_dynasty": {
+    "Ming": 288,
+    "Qing": 126
+  },
+  "by_occasion": {
+    "Changfu": 207,
+    "Lifu": 180,
+    "Chaofu": 27
+  },
+  "total_panels": 1476,
+  "created_at": "2026-09-17T21:02:53"
+}
