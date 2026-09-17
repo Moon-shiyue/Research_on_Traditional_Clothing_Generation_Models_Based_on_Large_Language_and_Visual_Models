@@ -68,22 +68,22 @@ def _read_jsonl(name):
 
 
 def test_training_data_nonempty():
+    """训练文本数据非空（当前为 18 条知识库条目）。"""
     rows = _read_jsonl("training_data.jsonl")
-    assert len(rows) >= 100
+    assert len(rows) >= 18
 
 
 def test_training_data_fields():
-    """核心字段存在；知识库条目（带 dynasty）与图文条目（带 classification）并存。"""
+    """核心字段存在；每条为知识库条目（带 dynasty 与 category）。"""
     rows = _read_jsonl("training_data.jsonl")
     knowledge = [r for r in rows if "dynasty" in r]
-    image_text = [r for r in rows if "classification" in r]
     assert knowledge, "缺少知识库条目"
-    assert image_text, "缺少图文条目"
     for row in rows:
         assert row["id"]
         assert row["text"]
+        assert row["dynasty"]
         assert row["source"]
-        assert row["data_type"]
+        assert row["data_type"] == "knowledge_base"
 
 
 def test_training_data_ids_unique():

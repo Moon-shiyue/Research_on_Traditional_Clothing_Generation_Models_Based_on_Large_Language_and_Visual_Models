@@ -13,7 +13,7 @@
 | **Chinese-Traditional-Clothing Dataset** ⭐ | **6,300 张** / 24,562 标注框 | COCO 目标检测（8 类形制） | [Roboflow Universe](https://universe.roboflow.com/ctcdata/chinese-traditional-clothing-dataset)（v12, 2023） | `downloads/kaggle_chinese_clothing/` |
 | **内置知识库（服装）** | 18 条 | 四级结构化标注 | 学术文献编码 | `dataset_index.json` |
 | **内置知识库（纹样）** | 10 条 | 纹样特征标注 | 学术文献编码 | `dataset_index.json` |
-| **训练文本数据** | 518 条 | 文本-标签配对 | 知识库 + 元数据转写 | `annotations/training_data.jsonl` |
+| **训练文本数据** | 18 条 | 文本-标签配对 | 知识库编码 | `annotations/training_data.jsonl` |
 | **DSL 训练数据** | 660 条 | 文本-GarmentCode 配对 | 脚本合成 | `annotations/dsl_training.jsonl` |
 
 ### 主力数据集详情
@@ -39,7 +39,7 @@ data/
 │   ├── craft/                  #   工艺规范
 │   └── culture/                #   文化背景
 ├── annotations/                # 标注与训练数据
-│   ├── training_data.jsonl     #   518 条训练文本
+│   ├── training_data.jsonl     #   18 条知识库训练文本
 │   └── dsl_training.jsonl      #   660 条 DSL 配对数据
 └── downloads/                  # 外部数据集下载（git 忽略）
     └── kaggle_chinese_clothing/  #   ⭐ 主力数据集（6,300 张 + COCO 标注）

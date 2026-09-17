@@ -12,7 +12,7 @@
 |--------|------|------|------|------|
 | **Chinese-Traditional-Clothing Dataset** ⭐ | **6,300 张** | COCO 目标检测（8 类形制） | [Roboflow Universe](https://universe.roboflow.com/ctcdata/chinese-traditional-clothing-dataset) | ✅ **当前使用** |
 | 内置知识库 | 28 条 | 四级结构化标注 | 学术文献编码 | ✅ 已上传 GitHub |
-| 训练文本数据 | 518 条 | 文本配对 | 知识库 + 元数据 | ✅ 已上传 GitHub |
+| 训练文本数据 | 18 条 | 文本配对 | 知识库编码 | ✅ 已上传 GitHub |
 | DSL 训练数据 | 660 条 | 文本-GarmentCode 配对 | 脚本合成 | ✅ 已上传 GitHub |
 
 ## ⭐ 主力数据集详情
