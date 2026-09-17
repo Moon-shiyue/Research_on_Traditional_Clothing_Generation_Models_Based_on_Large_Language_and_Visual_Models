@@ -1,0 +1,1463 @@
+design:
+  meta:
+    upper:
+      v: null
+      range:
+      - FittedShirt
+      - Shirt
+      - null
+      type: select_null
+      default_prob: 0.3
+    wb:
+      v: null
+      range:
+      - StraightWB
+      - FittedWB
+      - null
+      type: select_null
+      default_prob: 0.5
+    bottom:
+      v: null
+      range:
+      - SkirtCircle
+      - AsymmSkirtCircle
+      - GodetSkirt
+      - Pants
+      - Skirt2
+      - SkirtManyPanels
+      - PencilSkirt
+      - SkirtLevels
+      - MamianSkirt
+      - null
+      type: select_null
+      default_prob: 0.3
+  waistband:
+    waist:
+      v: 1.0
+      range:
+      - 1.0
+      - 2
+      type: float
+      default_prob: 0.7
+    width:
+      v: 0.2
+      range:
+      - 0.1
+      - 1.0
+      type: float
+      default_prob: 0.5
+  shirt:
+    strapless:
+      v: false
+      range:
+      - true
+      - false
+      type: bool
+      default_prob: 0.8
+    length:
+      v: 1.2
+      range:
+      - 0.5
+      - 3.5
+      type: float
+      default_prob: 0.7
+    width:
+      v: 1.05
+      range:
+      - 1.0
+      - 1.3
+      type: float
+      default_prob: 0.4
+    flare:
+      v: 1.0
+      range:
+      - 0.7
+      - 1.6
+      type: float
+      default_prob: 0.4
+  collar:
+    f_collar:
+      v: CircleNeckHalf
+      range:
+      - CircleNeckHalf
+      - CurvyNeckHalf
+      - VNeckHalf
+      - SquareNeckHalf
+      - TrapezoidNeckHalf
+      - CircleArcNeckHalf
+      - Bezier2NeckHalf
+      type: select
+      default_prob: 0.4
+    b_collar:
+      v: CircleNeckHalf
+      range:
+      - CircleNeckHalf
+      - CurvyNeckHalf
+      - VNeckHalf
+      - SquareNeckHalf
+      - TrapezoidNeckHalf
+      - CircleArcNeckHalf
+      - Bezier2NeckHalf
+      type: select
+      default_prob: 0.8
+    width:
+      v: 0.2
+      range:
+      - -0.5
+      - 1
+      type: float
+      default_prob: 0.4
+    fc_depth:
+      v: 0.4
+      range:
+      - 0.3
+      - 2
+      type: float
+      default_prob: 0.3
+    bc_depth:
+      v: 0
+      range:
+      - 0
+      - 2
+      type: float
+      default_prob: 0.4
+    fc_angle:
+      v: 95
+      range:
+      - 70
+      - 110
+      type: int
+    bc_angle:
+      v: 95
+      range:
+      - 70
+      - 110
+      type: int
+    f_bezier_x:
+      v: 0.3
+      range:
+      - 0.05
+      - 0.95
+      type: float
+      default_prob: 0.4
+    f_bezier_y:
+      v: 0.55
+      range:
+      - 0.05
+      - 0.95
+      type: float
+      default_prob: 0.4
+    b_bezier_x:
+      v: 0.15
+      range:
+      - 0.05
+      - 0.95
+      type: float
+      default_prob: 0.4
+    b_bezier_y:
+      v: 0.1
+      range:
+      - 0.05
+      - 0.95
+      type: float
+      default_prob: 0.4
+    f_flip_curve:
+      v: false
+      range:
+      - true
+      - false
+      type: bool
+      default_prob: 0.8
+    b_flip_curve:
+      v: false
+      range:
+      - true
+      - false
+      type: bool
+      default_prob: 0.8
+    component:
+      style:
+        v: null
+        range:
+        - Turtle
+        - SimpleLapel
+        - Hood2Panels
+        - null
+        type: select_null
+        default_prob: 0.6
+      depth:
+        v: 7
+        range:
+        - 2
+        - 8
+        type: int
+      lapel_standing:
+        v: false
+        range:
+        - true
+        - false
+        type: bool
+      hood_depth:
+        v: 1
+        range:
+        - 1
+        - 2
+        type: float
+        default_prob: 0.6
+      hood_length:
+        v: 1
+        range:
+        - 1
+        - 1.5
+        type: float
+        default_prob: 0.6
+  sleeve:
+    sleeveless:
+      v: true
+      range:
+      - true
+      - false
+      type: bool
+      default_prob: 0.7
+    armhole_shape:
+      v: ArmholeCurve
+      range:
+      - ArmholeSquare
+      - ArmholeAngle
+      - ArmholeCurve
+      type: select
+      default_prob: 0.7
+    length:
+      v: 0.3
+      range:
+      - 0.1
+      - 1.15
+      type: float
+    connecting_width:
+      v: 0.2
+      range:
+      - 0
+      - 2
+      type: float
+      default_prob: 0.6
+    end_width:
+      v: 1.0
+      range:
+      - 0.2
+      - 2
+      type: float
+      default_prob: 0.4
+    sleeve_angle:
+      v: 10
+      range:
+      - 10
+      - 50
+      type: int
+    opening_dir_mix:
+      v: 0.1
+      range:
+      - -0.9
+      - 0.8
+      type: float
+      default_prob: 1.0
+    standing_shoulder:
+      v: false
+      range:
+      - true
+      - false
+      type: bool
+      default_prob: 0.8
+    standing_shoulder_len:
+      v: 5.0
+      range:
+      - 4
+      - 10
+      type: float
+    connect_ruffle:
+      v: 1
+      range:
+      - 1
+      - 2
+      type: float
+      default_prob: 0.4
+    smoothing_coeff:
+      v: 0.25
+      range:
+      - 0.1
+      - 0.4
+      type: float
+      default_prob: 0.8
+    cuff:
+      type:
+        v: null
+        range:
+        - CuffBand
+        - CuffSkirt
+        - CuffBandSkirt
+        - null
+        type: select_null
+      top_ruffle:
+        v: 1
+        range:
+        - 1
+        - 3
+        type: float
+      cuff_len:
+        v: 0.1
+        range:
+        - 0.05
+        - 0.9
+        type: float
+        default_prob: 0.7
+      skirt_fraction:
+        v: 0.5
+        range:
+        - 0.1
+        - 0.9
+        type: float
+        default_prob: 0.5
+      skirt_flare:
+        v: 1.2
+        range:
+        - 1
+        - 2
+        type: float
+      skirt_ruffle:
+        v: 1.0
+        range:
+        - 1
+        - 1.5
+        type: float
+        default_prob: 0.3
+  left:
+    enable_asym:
+      v: false
+      range:
+      - true
+      - false
+      type: bool
+      default_prob: 0.8
+    shirt:
+      strapless:
+        v: false
+        range:
+        - true
+        - false
+        type: bool
+        default_prob: 0.8
+      width:
+        v: 1.0
+        range:
+        - 1.0
+        - 1.3
+        type: float
+        default_prob: 0.4
+      flare:
+        v: 1.0
+        range:
+        - 0.7
+        - 1.6
+        type: float
+        default_prob: 0.4
+    collar:
+      f_collar:
+        v: CircleNeckHalf
+        range:
+        - CircleNeckHalf
+        - CurvyNeckHalf
+        - VNeckHalf
+        - SquareNeckHalf
+        - TrapezoidNeckHalf
+        - CircleArcNeckHalf
+        - Bezier2NeckHalf
+        type: select
+        default_prob: 0.4
+      b_collar:
+        v: CircleNeckHalf
+        range:
+        - CircleNeckHalf
+        - CurvyNeckHalf
+        - VNeckHalf
+        - SquareNeckHalf
+        - TrapezoidNeckHalf
+        - CircleArcNeckHalf
+        - Bezier2NeckHalf
+        type: select
+        default_prob: 0.8
+      width:
+        v: 0.5
+        range:
+        - 0
+        - 1
+        type: float
+        default_prob: 0.4
+      fc_angle:
+        v: 95
+        range:
+        - 70
+        - 110
+        type: int
+      bc_angle:
+        v: 95
+        range:
+        - 70
+        - 110
+        type: int
+      f_bezier_x:
+        v: 0.5
+        range:
+        - 0.05
+        - 0.95
+        type: float
+        default_prob: 0.4
+      f_bezier_y:
+        v: 0.3
+        range:
+        - 0.05
+        - 0.95
+        type: float
+      b_bezier_x:
+        v: 0.5
+        range:
+        - 0.05
+        - 0.95
+        type: float
+        default_prob: 0.4
+      b_bezier_y:
+        v: 0.3
+        range:
+        - 0.05
+        - 0.95
+        type: float
+      f_flip_curve:
+        v: false
+        range:
+        - true
+        - false
+        type: bool
+        default_prob: 0.8
+      b_flip_curve:
+        v: false
+        range:
+        - true
+        - false
+        type: bool
+        default_prob: 0.8
+    sleeve:
+      sleeveless:
+        v: true
+        range:
+        - true
+        - false
+        type: bool
+        default_prob: 0.7
+      armhole_shape:
+        v: ArmholeCurve
+        range:
+        - ArmholeSquare
+        - ArmholeAngle
+        - ArmholeCurve
+        type: select
+        default_prob: 0.7
+      length:
+        v: 0.3
+        range:
+        - 0.1
+        - 1.15
+        type: float
+      connecting_width:
+        v: 0.2
+        range:
+        - 0
+        - 2
+        type: float
+        default_prob: 0.6
+      end_width:
+        v: 1.0
+        range:
+        - 0.2
+        - 2
+        type: float
+        default_prob: 0.4
+      sleeve_angle:
+        v: 10
+        range:
+        - 10
+        - 50
+        type: int
+      opening_dir_mix:
+        v: 0.2
+        range:
+        - -0.9
+        - 0.8
+        type: float
+        default_prob: 1.0
+      standing_shoulder:
+        v: false
+        range:
+        - true
+        - false
+        type: bool
+        default_prob: 0.8
+      standing_shoulder_len:
+        v: 5.0
+        range:
+        - 4
+        - 10
+        type: float
+      connect_ruffle:
+        v: 1
+        range:
+        - 1
+        - 2
+        type: float
+        default_prob: 0.4
+      smoothing_coeff:
+        v: 0.25
+        range:
+        - 0.1
+        - 0.4
+        type: float
+        default_prob: 0.8
+      cuff:
+        type:
+          v: null
+          range:
+          - CuffBand
+          - CuffSkirt
+          - CuffBandSkirt
+          - null
+          type: select_null
+        top_ruffle:
+          v: 1
+          range:
+          - 1
+          - 2
+          type: float
+        cuff_len:
+          v: 0.1
+          range:
+          - 0.05
+          - 0.9
+          type: float
+          default_prob: 0.7
+        skirt_fraction:
+          v: 0.5
+          range:
+          - 0.1
+          - 0.9
+          type: float
+          default_prob: 0.5
+        skirt_flare:
+          v: 1.2
+          range:
+          - 1
+          - 2
+          type: float
+        skirt_ruffle:
+          v: 1.0
+          range:
+          - 1
+          - 1.5
+          type: float
+          default_prob: 0.3
+  skirt:
+    length:
+      v: 0.2
+      range:
+      - -0.2
+      - 0.95
+      type: float
+    rise:
+      v: 1
+      range:
+      - 0.5
+      - 1
+      type: float
+      default_prob: 0.3
+    ruffle:
+      v: 1.3
+      range:
+      - 1
+      - 2
+      type: float
+      default_prob: 0.3
+    bottom_cut:
+      v: 0
+      range:
+      - 0
+      - 0.9
+      type: float
+      default_prob: 0.3
+    flare:
+      v: 0
+      range:
+      - 0
+      - 20
+      type: int
+      default_prob: 0.5
+  flare-skirt:
+    length:
+      v: 0.2
+      range:
+      - -0.2
+      - 0.95
+      type: float
+    rise:
+      v: 1
+      range:
+      - 0.5
+      - 1
+      type: float
+      default_prob: 0.3
+    suns:
+      v: 0.75
+      range:
+      - 0.1
+      - 1.95
+      type: float
+    skirt-many-panels:
+      n_panels:
+        v: 4
+        range:
+        - 4
+        - 15
+        type: int
+      panel_curve:
+        v: 0
+        range:
+        - -0.35
+        - -0.25
+        - -0.15
+        - 0
+        - 0.15
+        - 0.25
+        - 0.35
+        - 0.45
+        type: select
+    asymm:
+      front_length:
+        v: 0.5
+        range:
+        - 0.1
+        - 0.9
+        type: float
+        default_prob: 0.5
+    cut:
+      add:
+        v: false
+        range:
+        - true
+        - false
+        type: bool
+        default_prob: 0.6
+      depth:
+        v: 0.5
+        range:
+        - 0.05
+        - 0.95
+        type: float
+        default_prob: 0.6
+      width:
+        v: 0.1
+        range:
+        - 0.05
+        - 0.4
+        type: float
+      place:
+        v: -0.5
+        range:
+        - -1
+        - 1
+        type: float
+  godet-skirt:
+    base:
+      v: PencilSkirt
+      range:
+      - Skirt2
+      - PencilSkirt
+      type: select
+      default_prob: 0.7
+    insert_w:
+      v: 15
+      range:
+      - 10
+      - 50
+      type: int
+    insert_depth:
+      v: 20
+      range:
+      - 10
+      - 50
+      type: int
+    num_inserts:
+      v: 4
+      range:
+      - 4
+      - 6
+      - 8
+      - 10
+      - 12
+      type: select
+    cuts_distance:
+      v: 5
+      range:
+      - 0
+      - 10
+      type: int
+  pencil-skirt:
+    length:
+      v: 0.4
+      range:
+      - 0.2
+      - 0.95
+      type: float
+    rise:
+      v: 1
+      range:
+      - 0.5
+      - 1
+      type: float
+      default_prob: 0.3
+    flare:
+      v: 1.0
+      range:
+      - 0.6
+      - 1.5
+      type: float
+      default_prob: 0.3
+    low_angle:
+      v: 0
+      range:
+      - -30
+      - 30
+      type: int
+      default_prob: 0.7
+    front_slit:
+      v: 0
+      range:
+      - 0
+      - 0.9
+      type: float
+      default_prob: 0.4
+    back_slit:
+      v: 0
+      range:
+      - 0
+      - 0.9
+      type: float
+      default_prob: 0.4
+    left_slit:
+      v: 0
+      range:
+      - 0
+      - 0.9
+      type: float
+      default_prob: 0.6
+    right_slit:
+      v: 0
+      range:
+      - 0
+      - 0.9
+      type: float
+      default_prob: 0.6
+    style_side_cut:
+      v: null
+      range:
+      - Sun
+      - SIGGRAPH_logo
+      type: select_null
+      default_prob: 1.0
+  levels-skirt:
+    base:
+      v: PencilSkirt
+      range:
+      - Skirt2
+      - PencilSkirt
+      - SkirtCircle
+      - AsymmSkirtCircle
+      type: select
+    level:
+      v: Skirt2
+      range:
+      - Skirt2
+      - SkirtCircle
+      - AsymmSkirtCircle
+      type: select
+    num_levels:
+      v: 1
+      range:
+      - 1
+      - 5
+      type: int
+    level_ruffle:
+      v: 1.0
+      range:
+      - 1
+      - 1.7
+      type: float
+    length:
+      v: 0.5
+      range:
+      - 0.2
+      - 0.95
+      type: float
+    rise:
+      v: 1
+      range:
+      - 0.5
+      - 1
+      type: float
+      default_prob: 0.3
+    base_length_frac:
+      v: 0.5
+      range:
+      - 0.2
+      - 0.8
+      type: float
+  pants:
+    length:
+      v: 0.3
+      range:
+      - 0.2
+      - 0.9
+      type: float
+    width:
+      v: 1.0
+      range:
+      - 1.0
+      - 1.5
+      type: float
+      default_prob: 0.5
+    flare:
+      v: 1.0
+      range:
+      - 0.5
+      - 1.2
+      type: float
+      default_prob: 0.3
+    rise:
+      v: 1.0
+      range:
+      - 0.5
+      - 1
+      type: float
+      default_prob: 0.3
+    cuff:
+      type:
+        v: null
+        range:
+        - CuffBand
+        - CuffSkirt
+        - CuffBandSkirt
+        - null
+        type: select_null
+        default_prob: 0.5
+      top_ruffle:
+        v: 1.0
+        range:
+        - 1
+        - 2
+        type: float
+      cuff_len:
+        v: 0.1
+        range:
+        - 0.05
+        - 0.9
+        type: float
+        default_prob: 0.3
+      skirt_fraction:
+        v: 0.5
+        range:
+        - 0.1
+        - 0.9
+        type: float
+      skirt_flare:
+        v: 1.2
+        range:
+        - 1
+        - 2
+        type: float
+      skirt_ruffle:
+        v: 1.0
+        range:
+        - 1
+        - 1.5
+        type: float
+  traditional:
+    dynasty:
+      v: Ming
+      type: select
+      range:
+      - Han
+      - WeiJin
+      - Tang
+      - Song
+      - Ming
+      - Qing
+    collar:
+      v: Jiaoling
+      type: select
+      range:
+      - Jiaoling
+      - Yuanling
+      - Liling
+      - Duijin
+    sleeve:
+      v: Guangxiu
+      type: select
+      range:
+      - Guangxiu
+      - Zhaixiu
+      - Pipaxiu
+    occasion:
+      v: Changfu
+      type: select
+      range:
+      - Chaofu
+      - Lifu
+      - Changfu
+      - Bianfu
+  mamian-skirt:
+    length:
+      v: 0.85
+      type: float
+      range:
+      - knee-length: 0.55
+      - midi: 0.7
+      - floor-length: 0.85
+    mamian_width:
+      v: 28.0
+      type: float
+      range:
+      - narrow: 20.0
+      - standard: 28.0
+      - wide: 35.0
+    pleat_ruffle:
+      v: 1.8
+      type: float
+      range:
+      - light: 1.4
+      - medium: 1.8
+      - rich: 2.4
+    rise:
+      v: 0.75
+      type: float
+      range:
+      - low: 0.55
+      - mid: 0.75
+      - high: 0.95
+    waistband_width:
+      v: 0.26
+      type: float
+      range:
+      - narrow: 0.18
+      - standard: 0.26
+      - wide: 0.35
+  pipa-sleeve:
+    length:
+      v: 0.95
+      type: float
+      range:
+      - short: 0.7
+      - standard: 0.95
+      - long: 1.15
+    cuff_width:
+      v: 15.0
+      type: float
+      range:
+      - narrow: 12.0
+      - standard: 15.0
+      - wide: 18.0
+    root_width:
+      v: 22.0
+      type: float
+      range:
+      - narrow: 18.0
+      - standard: 22.0
+      - wide: 27.0
+    bulge_width:
+      v: 35.0
+      type: float
+      range:
+      - slight: 28.0
+      - standard: 35.0
+      - rich: 42.0
+    bulge_position:
+      v: 0.45
+      type: float
+      range:
+      - early: 0.32
+      - standard: 0.45
+      - late: 0.55
+    sleeve_cap_height:
+      v: 12.0
+      type: float
+      range:
+      - low: 8.0
+      - standard: 12.0
+      - high: 16.0
+  stand-collar:
+    collar_height:
+      v: 3.5
+      type: float
+      range:
+      - ming-low: 2.5
+      - ming-high: 3.5
+      - qing: 5.0
+    collar_flare:
+      v: 5.0
+      type: float
+      range:
+      - straight: 0.0
+      - slight: 5.0
+      - flared: 12.0
+    top_curve:
+      v: 1.5
+      type: float
+      range:
+      - flat: 0.0
+      - slight: 1.5
+      - curved: 3.0
+    closure_gap:
+      v: 1.5
+      type: float
+      range:
+      - tight: 0.8
+      - standard: 1.5
+      - loose: 2.5
+  cross-collar:
+    collar_width:
+      v: 20.0
+      type: float
+      range:
+      - narrow: 14.0
+      - standard: 20.0
+      - wide: 27.0
+    collar_depth:
+      v: 25.0
+      type: float
+      range:
+      - shallow: 18.0
+      - standard: 25.0
+      - deep: 33.0
+    cross_angle:
+      v: 50.0
+      type: float
+      range:
+      - narrow: 35.0
+      - standard: 50.0
+      - wide: 65.0
+    overlap_amount:
+      v: 8.0
+      type: float
+      range:
+      - slight: 5.0
+      - standard: 8.0
+      - deep: 12.0
+    border_width:
+      v: 3.0
+      type: float
+      range:
+      - narrow: 1.5
+      - standard: 3.0
+      - wide: 5.0
+    back_neck_depth:
+      v: 3.0
+      type: float
+      range:
+      - shallow: 2.0
+      - standard: 3.0
+      - deep: 5.0
+  round-collar:
+    front_depth:
+      v: 10.0
+      type: float
+      range:
+      - shallow: 7.0
+      - standard: 10.0
+      - deep: 15.0
+    back_depth:
+      v: 4.0
+      type: float
+      range:
+      - shallow: 2.5
+      - standard: 4.0
+      - deep: 6.0
+    border_width:
+      v: 2.5
+      type: float
+      range:
+      - narrow: 1.2
+      - standard: 2.5
+      - wide: 4.5
+  duijin-collar:
+    front_width:
+      v: 8.0
+      type: float
+      range:
+      - narrow: 5.0
+      - standard: 8.0
+      - wide: 12.0
+    neck_depth:
+      v: 12.0
+      type: float
+      range:
+      - shallow: 8.0
+      - standard: 12.0
+      - deep: 18.0
+    placket_width:
+      v: 3.0
+      type: float
+      range:
+      - narrow: 2.0
+      - standard: 3.0
+      - wide: 5.0
+    placket_height:
+      v: 5.0
+      type: float
+      range:
+      - short: 3.5
+      - standard: 5.0
+      - long: 7.0
+    collar_stand_height:
+      v: 1.0
+      type: float
+      range:
+      - flat: 0.0
+      - standard: 1.0
+      - raised: 2.5
+  wide-sleeve:
+    length:
+      v: 1.05
+      type: float
+      range:
+      - short: 0.85
+      - standard: 1.05
+      - long: 1.25
+    cuff_width:
+      v: 60.0
+      type: float
+      range:
+      - moderate: 45.0
+      - standard: 60.0
+      - grand: 90.0
+    root_width:
+      v: 20.0
+      type: float
+      range:
+      - narrow: 16.0
+      - standard: 20.0
+      - wide: 25.0
+    flare_start_ratio:
+      v: 0.3
+      type: float
+      range:
+      - early: 0.15
+      - standard: 0.3
+      - late: 0.45
+    sleeve_cap_height:
+      v: 13.0
+      type: float
+      range:
+      - low: 9.0
+      - standard: 13.0
+      - high: 17.0
+  narrow-sleeve:
+    length:
+      v: 1.2
+      type: float
+      range:
+      - short: 1.0
+      - standard: 1.2
+      - long: 1.4
+    cuff_width:
+      v: 18.0
+      type: float
+      range:
+      - narrow: 14.0
+      - standard: 18.0
+      - wide: 22.0
+    root_width:
+      v: 20.0
+      type: float
+      range:
+      - narrow: 17.0
+      - standard: 20.0
+      - wide: 24.0
+    elbow_width:
+      v: 22.0
+      type: float
+      range:
+      - slight: 20.0
+      - standard: 22.0
+      - loose: 26.0
+    elbow_position:
+      v: 0.45
+      type: float
+      range:
+      - high: 0.35
+      - standard: 0.45
+      - low: 0.55
+    sleeve_cap_height:
+      v: 11.0
+      type: float
+      range:
+      - low: 8.0
+      - standard: 11.0
+      - high: 14.0
+  ruqun-skirt:
+    length:
+      v: 0.85
+      type: float
+      range:
+      - knee-length: 0.55
+      - midi: 0.7
+      - floor-length: 0.85
+    waist_ratio:
+      v: 1.0
+      type: float
+      range:
+      - fitted: 1.0
+      - loose: 1.15
+    hem_ratio:
+      v: 2.5
+      type: float
+      range:
+      - moderate: 1.8
+      - full: 2.5
+      - grand: 3.5
+    waistband_width:
+      v: 0.22
+      type: float
+      range:
+      - narrow: 0.15
+      - standard: 0.22
+      - wide: 0.3
+    tie_length:
+      v: 80.0
+      type: float
+      range:
+      - short: 60.0
+      - standard: 80.0
+      - long: 110.0
+    waist_position:
+      v: 0.85
+      type: float
+      range:
+      - mid: 0.7
+      - high: 0.85
+      - chest: 0.95
+  cloud-shoulder:
+    layers:
+      v: 2
+      type: int
+      range:
+      - single: 1
+      - double: 2
+      - triple: 3
+    petal_count:
+      v: 8
+      type: int
+      range:
+      - sparse: 4
+      - standard: 6
+      - dense: 8
+    petal_length:
+      v: 0.28
+      type: float
+      range:
+      - short: 0.2
+      - standard: 0.28
+      - long: 0.38
+    neck_opening:
+      v: 0.75
+      type: float
+      range:
+      - tight: 0.62
+      - standard: 0.75
+      - loose: 0.9
+    scallop_depth:
+      v: 0.45
+      type: float
+      range:
+      - shallow: 0.28
+      - standard: 0.45
+      - deep: 0.62
+    layer_overlap:
+      v: 0.45
+      type: float
+      range:
+      - slight: 0.3
+      - standard: 0.45
+      - rich: 0.6
+    tassel_length:
+      v: 6.0
+      type: float
+      range:
+      - none: 0.0
+      - short: 6.0
+      - long: 12.0
+    back_gap:
+      v: 6.0
+      type: float
+      range:
+      - tight: 3.0
+      - standard: 6.0
+      - wide: 12.0
+  beizi:
+    length:
+      v: 1.15
+      type: float
+      range:
+      - knee: 0.75
+      - midi: 1.0
+      - ankle: 1.25
+    chest_ease:
+      v: 1.12
+      type: float
+      range:
+      - fitted: 1.04
+      - standard: 1.12
+      - loose: 1.25
+    shoulder_ease:
+      v: 1.04
+      type: float
+      range:
+      - fitted: 0.98
+      - standard: 1.04
+      - loose: 1.12
+    neck_depth_front:
+      v: 12.0
+      type: float
+      range:
+      - shallow: 8.0
+      - standard: 12.0
+      - deep: 18.0
+    neck_depth_back:
+      v: 2.5
+      type: float
+      range:
+      - shallow: 1.5
+      - standard: 2.5
+      - deep: 4.0
+    armhole_depth:
+      v: 0.58
+      type: float
+      range:
+      - shallow: 0.5
+      - standard: 0.58
+      - deep: 0.68
+    slit_height:
+      v: 0.45
+      type: float
+      range:
+      - low: 0.3
+      - standard: 0.45
+      - high: 0.6
+    front_opening_width:
+      v: 2.0
+      type: float
+      range:
+      - narrow: 1.2
+      - standard: 2.0
+      - wide: 3.5
+    front_opening_stop:
+      v: 0.05
+      type: float
+      range:
+      - full: 0.03
+      - standard: 0.05
+      - short: 0.12
+    sleeve_length:
+      v: 0.9
+      type: float
+      range:
+      - short: 0.7
+      - standard: 0.9
+      - long: 1.05
+    sleeve_root_width:
+      v: 34.0
+      type: float
+      range:
+      - narrow: 28.0
+      - standard: 34.0
+      - wide: 40.0
+    sleeve_cuff_width:
+      v: 22.0
+      type: float
+      range:
+      - narrow: 16.0
+      - standard: 22.0
+      - wide: 28.0
+    sleeve_cap_height:
+      v: 14.0
+      type: float
+      range:
+      - low: 10.0
+      - standard: 14.0
+      - high: 18.0
+  banbi:
+    length:
+      v: 0.62
+      type: float
+      range:
+      - short: 0.5
+      - standard: 0.62
+      - long: 0.78
+    chest_ease:
+      v: 1.08
+      type: float
+      range:
+      - fitted: 1.02
+      - standard: 1.08
+      - loose: 1.18
+    shoulder_ease:
+      v: 1.02
+      type: float
+      range:
+      - fitted: 0.96
+      - standard: 1.02
+      - loose: 1.1
+    sleeve_length:
+      v: 0.45
+      type: float
+      range:
+      - short: 0.32
+      - standard: 0.45
+      - long: 0.6
+    sleeve_width:
+      v: 18.0
+      type: float
+      range:
+      - narrow: 14.0
+      - standard: 18.0
+      - wide: 24.0
+    neck_depth_front:
+      v: 10.0
+      type: float
+      range:
+      - shallow: 7.0
+      - standard: 10.0
+      - deep: 15.0
+    neck_depth_back:
+      v: 2.0
+      type: float
+      range:
+      - shallow: 1.2
+      - standard: 2.0
+      - deep: 3.5
+    front_opening_width:
+      v: 2.5
+      type: float
+      range:
+      - narrow: 1.5
+      - standard: 2.5
+      - wide: 4.0
+    front_opening_stop:
+      v: 0.06
+      type: float
+      range:
+      - full: 0.03
+      - standard: 0.06
+      - short: 0.14

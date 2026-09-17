@@ -1,20 +1,34 @@
 {
-  "total": 414,
-  "rejected": 72,
+  "total": 2140,
+  "rejected": 722,
   "by_component": {
     "mamian-skirt": 216,
     "pipa-sleeve": 144,
-    "stand-collar": 54
+    "stand-collar": 54,
+    "cross-collar": 648,
+    "round-collar": 162,
+    "duijin-collar": 108,
+    "wide-sleeve": 162,
+    "narrow-sleeve": 300,
+    "ruqun-skirt": 162,
+    "cloud-shoulder": 48,
+    "beizi": 40,
+    "banbi": 96
   },
   "by_dynasty": {
-    "Ming": 288,
-    "Qing": 126
+    "Ming": 662,
+    "Qing": 210,
+    "Han": 330,
+    "Tang": 432,
+    "Song": 452,
+    "WeiJin": 54
   },
   "by_occasion": {
-    "Changfu": 207,
-    "Lifu": 180,
-    "Chaofu": 27
+    "Changfu": 1070,
+    "Lifu": 764,
+    "Chaofu": 108,
+    "Bianfu": 198
   },
-  "total_panels": 1476,
-  "created_at": "2026-09-17T21:02:53"
+  "total_panels": 5704,
+  "created_at": "2026-09-17T21:26:57"
 }
