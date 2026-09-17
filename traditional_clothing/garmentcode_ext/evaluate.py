@@ -31,7 +31,24 @@ import re
 import sys
 from collections import Counter, defaultdict
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+def find_gc_dir(explicit=None):
+    """探测 GarmentCode 根目录（含 assets/bodies 与 pygarment）。"""
+    here = os.path.dirname(os.path.abspath(__file__))
+    cands = ([explicit] if explicit else []) + [
+        os.path.join(here, '..'),           # 脚本在 GarmentCode/traditional_ext/
+        os.path.join(here, '..', '..'),
+        os.getcwd(),
+    ]
+    for c in cands:
+        if not c:
+            continue
+        c = os.path.normpath(c)
+        if (os.path.exists(os.path.join(c, 'assets', 'bodies', 'mean_female.yaml'))
+                and os.path.isdir(os.path.join(c, 'pygarment'))):
+            return c
+    return None
+
 
 # 组件 → (模块, 类名)
 MODULE_MAP = {
@@ -120,37 +137,58 @@ def main():
     ap.add_argument('--gt', required=True, help='标注答案 JSON（d2gc_*_val.json）')
     ap.add_argument('--report', default='', help='报告输出路径（JSON）')
     ap.add_argument('--no-exec', action='store_true', help='跳过可执行性检查')
+    ap.add_argument('--gc-dir', default=None, help='GarmentCode 根目录（自动探测）')
     args = ap.parse_args()
 
-    preds_rows = load_jsonl(args.predictions)
+    # 路径解析（支持相对当前工作目录）
+    pred_path = os.path.abspath(args.predictions)
+    gt_path = os.path.abspath(args.gt)
+    for label, p in (('predictions', pred_path), ('gt', gt_path)):
+        if not os.path.exists(p):
+            print(f'❌ {label} 文件不存在: {p}')
+            return 1
+
+    preds_rows = load_jsonl(pred_path)
     preds = {}
     for r in preds_rows:
         key = r.get('id') or r.get('src_id')
         if key:
             preds[key] = r.get('prediction', r.get('output', ''))
-    gt_rows = load_json(args.gt)
+    gt_rows = load_json(gt_path)
     gt = {r['id']: r for r in gt_rows}
 
     print('=' * 66)
     print('  传统服饰设计微调 — 效果评测')
     print('=' * 66)
-    print(f'\n预测: {args.predictions}  ({len(preds)} 条)')
-    print(f'标注: {args.gt}  ({len(gt)} 条)')
+    print(f'\n预测: {pred_path}  ({len(preds)} 条)')
+    print(f'标注: {gt_path}  ({len(gt)} 条)')
 
-    # 环境准备（可执行性检查）
+    # 环境准备（可执行性检查需要 GarmentCode）
     body = base_design = None
+    cwd0 = os.getcwd()
     if not args.no_exec:
-        try:
-            import yaml
-            from assets.bodies.body_params import BodyParameters
-            from traditional_ext.build_dataset import build_component
-            with open('./assets/design_params/traditional.yaml', encoding='utf-8') as f:
-                base_design = yaml.safe_load(f)['design']
-            body = BodyParameters('./assets/bodies/mean_female.yaml')
-        except Exception as exc:
-            print(f'\n⚠ 无法加载 GarmentCode 环境（{type(exc).__name__}），'
-                  f'将跳过可执行性检查')
+        gc_dir = find_gc_dir(args.gc_dir)
+        if not gc_dir:
+            print('\n⚠ 未找到 GarmentCode 环境，跳过可执行性检查'
+                  '（用 --gc-dir 指定，或确认已 pip install -e .）')
             args.no_exec = True
+        else:
+            sys.path.insert(0, gc_dir)
+            os.chdir(gc_dir)
+            try:
+                import yaml
+                from assets.bodies.body_params import BodyParameters
+                from traditional_ext.build_dataset import build_component
+                with open('./assets/design_params/traditional.yaml',
+                          encoding='utf-8') as f:
+                    base_design = yaml.safe_load(f)['design']
+                body = BodyParameters('./assets/bodies/mean_female.yaml')
+                print(f'\nGarmentCode 环境: {gc_dir}')
+            except Exception as exc:
+                print(f'\n⚠ GarmentCode 环境不可用（{type(exc).__name__}: {exc}），'
+                      f'跳过可执行性检查')
+                os.chdir(cwd0)
+                args.no_exec = True
 
     stats = Counter()
     field_acc = []
@@ -267,7 +305,7 @@ def main():
                   f'exact={cs["exact"]}/{cs["total"]}')
 
     report = {
-        'predictions': args.predictions, 'gt': args.gt,
+        'predictions': pred_path, 'gt': gt_path,
         'total': n, 'missing_predictions': missing,
         'json_valid_rate': stats['json_ok'] / n if n else 0,
         'component_node_rate': stats['node_ok'] / n if n else 0,
@@ -278,10 +316,11 @@ def main():
         'by_component': {c: dict(v) for c, v in by_comp.items()},
         'details': details,
     }
+    os.chdir(cwd0)          # 恢复工作目录（前面为加载 assets 切到过 GarmentCode）
     if args.report:
-        with open(args.report, 'w', encoding='utf-8') as f:
+        with open(os.path.abspath(args.report), 'w', encoding='utf-8') as f:
             json.dump(report, f, ensure_ascii=False, indent=2)
-        print(f'\n  详细报告: {args.report}')
+        print(f'\n  详细报告: {os.path.abspath(args.report)}')
     print('=' * 66)
     return 0
 
