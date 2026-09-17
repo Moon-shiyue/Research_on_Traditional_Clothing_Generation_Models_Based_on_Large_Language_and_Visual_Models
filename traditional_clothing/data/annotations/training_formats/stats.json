@@ -1,0 +1,38 @@
+{
+  "source_samples": 2140,
+  "train_combos": 1931,
+  "val_combos": 209,
+  "train_rows": 15448,
+  "val_rows": 1672,
+  "tasks": {
+    "text2design": 5793,
+    "text2code": 5793,
+    "caption2design": 1931,
+    "design2text": 1931
+  },
+  "by_component_train": {
+    "mamian-skirt": 1560,
+    "pipa-sleeve": 1040,
+    "stand-collar": 392,
+    "cross-collar": 4672,
+    "round-collar": 1168,
+    "duijin-collar": 784,
+    "wide-sleeve": 1168,
+    "narrow-sleeve": 2160,
+    "ruqun-skirt": 1168,
+    "cloud-shoulder": 352,
+    "beizi": 288,
+    "banbi": 696
+  },
+  "by_dynasty_train": {
+    "Ming": 4816,
+    "Qing": 1544,
+    "Han": 2408,
+    "Tang": 3064,
+    "Song": 3256,
+    "WeiJin": 360
+  },
+  "val_ratio": 0.1,
+  "seed": 42,
+  "created_at": "2026-09-17T21:30:03"
+}

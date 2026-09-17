@@ -11,6 +11,7 @@
 | 数据类别 | 规模 | 标注方式 | 来源 | 位置 |
 |----------|------|----------|------|------|
 | **传统服饰设计数据集** ⭐ | **2,140 条** | (制版说明, caption, 配置, 代码) 四元配对 | **程序化生成 + 形制校验** | `annotations/traditional_design_dataset.jsonl` |
+| **微调格式数据** ⭐ | **15,448 条**（train） | Alpaca / ShareGPT / OpenAI / D2GC 四格式 | 由上一行展开 | `annotations/training_formats/` |
 | **Chinese-Traditional-Clothing Dataset** | **6,300 张** / 24,562 标注框 | COCO 目标检测（8 类形制） | [Roboflow Universe](https://universe.roboflow.com/ctcdata/chinese-traditional-clothing-dataset)（v12, 2023） | `downloads/kaggle_chinese_clothing/` |
 | **内置知识库（服装）** | 18 条 | 四级结构化标注 | 学术文献编码 | `dataset_index.json` |
 | **内置知识库（纹样）** | 10 条 | 纹样特征标注 | 学术文献编码 | `dataset_index.json` |
