@@ -29,12 +29,14 @@ traditional_clothing/
 │   ├── engine.py              #   ValidationEngine 校验引擎
 │   └── rules/                 #   规则库：朝代/领/袖/裙/色彩/纹样/组合
 ├── data/                      # 数据集
-│   ├── dataset_index.json     #   主数据集索引（28 条四级结构化标注）
+│   ├── dataset_index.json     #   知识库索引（28 条四级结构化标注）
 │   ├── annotation_spec.md     #   标注规范文档
 │   ├── annotations/           #   training_data.jsonl / dsl_training.jsonl
 │   ├── texts/                 #   形制文献 / 工艺规范 / 文化背景目录
-│   ├── images/                #   图像数据（文物/汉服/纹样，git 忽略，脚本可重下）
-│   └── downloads/             #   外部数据集下载（git 忽略）
+│   └── downloads/             #   ⭐ 主力数据集（6,300 张，git 忽略，脚本可重下）
+├── datasets/                  # 数据集文档 + COCO 标注（已上传 GitHub）
+│   ├── README.md              #   数据集来源/许可/使用注意事项
+│   └── kaggle_annotations/    #   8 类形制 COCO 标注（24,562 框）
 ├── tools/                     # 数据工具脚本
 │   ├── generate_synthetic_data.py   #   合成文本训练数据
 │   ├── synthesize_dsl_data.py       #   合成 GarmentCode DSL 训练数据
@@ -154,13 +156,18 @@ for r in report.results:
 
 > ⚠️ **GitHub 仓库未包含图片文件，仅含标注数据与下载脚本。**
 
+- **图像数据（主力）**：**Chinese-Traditional-Clothing Dataset**，6,300 张
+  （Roboflow v12）+ **24,562 个 COCO 边界框**，8 类形制标注
+  （袄裙/道袍/袍/曲裾/襦裙/直裰/直裾/朱子深衣）——约 820MB，
+  **未上传 GitHub**，通过 `tools/download_datasets.py` 重新获取
 - **dataset_index.json**：28 条四级结构化标注（朝代-形制-部件-纹样），
   覆盖汉/魏晋/唐/宋/明/清六代，18 条服装条目 + 10 条纹样条目
 - **training_data.jsonl**：518 条训练文本（知识库 + 图文多模态）
 - **dsl_training.jsonl**：660 条 GarmentCode DSL 训练数据（含体型参数）
-- 图像收集：MET 博物馆（CC0）、Wikimedia Commons、洛阳刺绣、Kaggle 汉服数据集
-  约 2GB 图片**未上传 GitHub**，仅提供 `tools/` 下载脚本按需重新获取
-  （详见 `data/README.md` 与 `datasets/README.md`）
+
+⚠️ **数据使用提示**：主力数据集含 Roboflow 自动增强（约 4.1 倍），独立原图约 1,561 张；
+其中约 40 张原图的增强版本跨越 train/valid/test，训练前建议按原图名重新划分
+（详见 `datasets/README.md`）。数据集许可为 `undefined`，学术使用请注明来源。
 
 ---
 
@@ -188,5 +195,9 @@ python -m pytest tests/ -v
 
 ## 📄 许可与致谢
 
-数据来源：MET Open Access（CC0）、Wikimedia Commons、洛阳民俗博物馆（免费开放）、
-学术文献知识编码。外部数据集使用请遵守各自许可（详见 `data/README.md`）。
+**图像数据来源**：[Chinese-Traditional-Clothing Dataset](https://universe.roboflow.com/ctcdata/chinese-traditional-clothing-dataset)
+（Roboflow Universe / CTCDATA，v12）——该数据集 Roboflow 标注许可为 `undefined`，
+学术研究使用请注明来源，商用或再分发前请联系数据集作者确认。
+
+**文本与知识数据**：基于学术文献与博物馆公开信息编码（沈从文《中国古代服饰研究》等），
+详见 `data/texts/`。外部数据集使用请遵守各自许可（详见 `data/README.md`）。

@@ -15,7 +15,8 @@
     │   ├── accessories/             #   配饰：云肩、褙子、半臂
     │   └── garments/                #   GarmentComposer 服装组合器
     ├── validation/                  # 形制规则校验引擎（23 条文化合规规则）
-    ├── data/                        # 传统服饰数据集（28 条标注 + 训练语料）
+    ├── data/                        # 知识库（28 条）+ 训练语料（518/660 条）
+    ├── datasets/                    # 主力数据集文档 + COCO 形制标注（24,562 框）
     ├── tools/                       # 数据采集 / 扩充 / 合成工具
     ├── tests/                       # 单元测试（91 项）
     ├── requirements.txt
@@ -63,13 +64,14 @@ print("通过:", report.passed)
 |------|------|------|
 | 参数化组件库 | 12 个传统服饰部件（领/袖/裙/配饰） | ✅ 完成 |
 | 形制校验引擎 | 23 条文化合规规则（朝代/部件/色彩/纹样/组合） | ✅ 完成 |
-| 数据集 | 28 条四级结构化标注 + 518 条训练文本 + 660 条 DSL 数据 | ✅ 完成 |
+| 数据集 | **6,300 张图像 + 24,562 个形制标注框** + 28 条知识库 + 518 条训练文本 + 660 条 DSL 数据 | ✅ 完成 |
 | 单元测试 | 91 项（组件构建/规则命中/数据完整性） | ✅ 完成 |
 
-> ⚠️ **关于图片数据**：约 2GB 的爬取/下载图片（文物照片、汉服参考图、纹样素材）
-> **未上传到 GitHub**，仅上传了 `traditional_clothing/tools/` 下的下载脚本。
-> 需要图片时运行脚本即可从原始来源（MET CC0 / Wikimedia Commons / Kaggle 等）重新获取，
-> 详见 [`traditional_clothing/data/README.md`](traditional_clothing/data/README.md)。
+> ⚠️ **关于图片数据**：图像数据集为 **Chinese-Traditional-Clothing Dataset**（6,300 张，
+> 约 820MB，Roboflow v12，含 8 类形制 COCO 标注），**未上传到 GitHub**——
+> 仅上传了标注数据与 `traditional_clothing/tools/` 下的下载脚本。
+> 需要图片时运行 `python tools/download_datasets.py` 从原始来源重新获取，
+> 详见 [`traditional_clothing/datasets/README.md`](traditional_clothing/datasets/README.md)。
 
 ## 📚 参考
 
@@ -79,5 +81,8 @@ print("通过:", report.passed)
 
 ## 📄 许可
 
-数据来源：MET Open Access（CC0）、Wikimedia Commons、洛阳民俗博物馆（免费开放）、
-学术文献知识编码。外部数据集使用请遵守各自许可。
+**图像数据**：[Chinese-Traditional-Clothing Dataset](https://universe.roboflow.com/ctcdata/chinese-traditional-clothing-dataset)
+（Roboflow Universe / CTCDATA，v12）——Roboflow 标注许可为 `undefined`，
+学术使用请注明来源，商用/再分发前请联系作者确认。
+
+**文本与知识数据**：基于学术文献与博物馆公开信息编码，详见 `traditional_clothing/data/`。

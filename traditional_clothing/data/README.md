@@ -2,49 +2,55 @@
 
 > ⚠️ **重要说明：本仓库（GitHub）未包含任何图片数据文件**
 >
-> 图片数据总体积约 2GB（`images/` 约 1GB + `downloads/` 约 800MB），
-> 由于 git 不适合托管二进制大文件，**GitHub 上仅上传了下载/爬取脚本，
-> 未上传任何图片文件**。所有图片均可通过下方脚本从原始来源重新下载。
+> 图像数据总体积约 820MB（6,300 张），由于 git 不适合托管二进制大文件，
+> **GitHub 上仅上传了标注数据（JSON/JSONL）与下载脚本，未上传任何图片文件**。
+> 图片可通过下方脚本从原始来源重新下载。
 
-## 📊 数据集总览
+## 📊 当前实际使用的数据集
 
-| 数据类别 | 条目数 | 标注方式 | 来源 |
-|----------|--------|----------|------|
-| **内置知识库（服装）** | 18 条 | 四级结构化标注 | 学术文献编码 |
-| **内置知识库（纹样）** | 10 条 | 纹样特征标注 | 学术文献编码 |
-| **洛阳刺绣数据集** | 260 件 | 原始标注 | 洛阳民俗博物馆 |
-| **GarmentCodeData** | 115,000 条 | 3D+纸样 | ETH Zurich |
-| **Hanfu-Bench** | 1,192 张 | 多模态 | 学术基准 |
-| **CulTi** | 5,726 对 | 图文多模态 | ICDAR 2025 |
-| **故宫数字文物库** | 10万+ 件 | 在线浏览 | 故宫博物院 |
-| **苏州丝绸纹样库** | 10,000 个 | 纹样数据 | 苏州丝绸博物馆 |
+| 数据类别 | 规模 | 标注方式 | 来源 | 位置 |
+|----------|------|----------|------|------|
+| **Chinese-Traditional-Clothing Dataset** ⭐ | **6,300 张** / 24,562 标注框 | COCO 目标检测（8 类形制） | [Roboflow Universe](https://universe.roboflow.com/ctcdata/chinese-traditional-clothing-dataset)（v12, 2023） | `downloads/kaggle_chinese_clothing/` |
+| **内置知识库（服装）** | 18 条 | 四级结构化标注 | 学术文献编码 | `dataset_index.json` |
+| **内置知识库（纹样）** | 10 条 | 纹样特征标注 | 学术文献编码 | `dataset_index.json` |
+| **训练文本数据** | 518 条 | 文本-标签配对 | 知识库 + 元数据转写 | `annotations/training_data.jsonl` |
+| **DSL 训练数据** | 660 条 | 文本-GarmentCode 配对 | 脚本合成 | `annotations/dsl_training.jsonl` |
+
+### 主力数据集详情
+
+- **来源**：[Roboflow Universe — ctcdata/chinese-traditional-clothing-dataset](https://universe.roboflow.com/ctcdata/chinese-traditional-clothing-dataset)
+- **版本**：v12（2023-05-02 导出），官方声明 6,300 张
+- **8 类形制标注**：AoQun（袄裙）、DaoPao（道袍）、Pao（袍）、QuJu（曲裾）、
+  RuQun（襦裙）、ZhiDuo（直裰）、ZhiJu（直裾）、ZhuZiShenYi（朱子深衣）
+- **许可**：⚠️ Roboflow 标注为 `License: undefined`（许可未明确），
+  学术研究使用需注明来源，商用/再分发请先联系数据集作者确认
+- **注意**：6,300 张中包含 Roboflow 自动数据增强（约 4.1 倍），
+  独立原图约 1,561 张；训练时建议按原图名重新划分 split 以避免数据泄露
 
 ## 📁 目录结构
 
 ```
 data/
-├── dataset_index.json          # 主数据集索引（28条已标注）
+├── dataset_index.json          # 知识库索引（28 条四级结构化标注）
 ├── annotation_spec.md          # 标注规范文档
 ├── README.md                   # 本文档
-├── images/                     # 图像数据
-│   ├── relics/                 #  文物照片
-│   │   └── wikimedia/          #    Wikimedia Commons 公开图像
-│   ├── hanfu/                  #  汉服参考图
-│   │   └── wikimedia/          #    Wikimedia Commons 公开图像
-│   └── patterns/               #  纹样素材
 ├── texts/                      # 文本数据
-│   ├── literature/             #  形制文献目录
-│   ├── craft/                  #  工艺规范
-│   └── culture/                #  文化背景
-├── annotations/                # 标注数据
-│   ├── images/
-│   └── texts/
-└── downloads/                  # 外部数据集下载
+│   ├── literature/             #   形制文献目录
+│   ├── craft/                  #   工艺规范
+│   └── culture/                #   文化背景
+├── annotations/                # 标注与训练数据
+│   ├── training_data.jsonl     #   518 条训练文本
+│   └── dsl_training.jsonl      #   660 条 DSL 配对数据
+└── downloads/                  # 外部数据集下载（git 忽略）
+    └── kaggle_chinese_clothing/  #   ⭐ 主力数据集（6,300 张 + COCO 标注）
 ```
 
-## 🔌 外部数据集获取方式
+## 🔌 可选外部资源（当前**未**使用）
 
-### 1. GarmentCodeData (ETH Zurich) — 强烈推荐！
+> 以下数据集在项目调研阶段登记备选，当前**未下载、未使用**，
+> 仅作为后续扩展时的候选来源。若需使用请自行确认许可条款。
+
+### 1. GarmentCodeData (ETH Zurich)
 
 **内容**: 115,000 个 3D 定制服装 + 缝纫纸样 (JSON/PLY/OBJ)
 **用途**: 本项目核心参考数据集，提供标准化的纸样生成范例
@@ -52,46 +58,42 @@ data/
 **许可**: 学术研究
 **大小**: 约 50GB+（分批下载）
 
-```bash
-# 访问 ETH Research Collection 下载（约 50GB，分批）
-# 或使用公开数据集工具脚本（TEXMET / 中国女鞋，见 tools/ 目录）:
-pip install datasets huggingface_hub
-python tools/download_public_data.py
-```
-
 ### 2. Hanfu-Bench — 汉服多模态基准
 
 **内容**: 1,192 张汉服图像 + 专家标注
 **获取**: https://huggingface.co/datasets/lizhou21/hanfu-bench
 **许可**: CC BY-NC-SA 4.0（仅学术，不可训练模型）
-**安装**:
-```bash
-pip install datasets
-python -c "from datasets import load_dataset; load_dataset('lizhou21/hanfu-bench')"
-```
 
-### 3. 洛阳民俗博物馆刺绣文物数据集 — 免费下载！
+### 3. 洛阳民俗博物馆刺绣文物数据集
 
 **内容**: 260 件（套）清中晚期至民国刺绣服饰高清图片
 **获取**: https://geodoi.ac.cn/WebCn/doi.aspx?ID=1836
 **DOI**: 10.3974/geodb.2021.07.03.V1
-**大小**: 1.45 GB（4个压缩包）
 **许可**: 免费开放（需标注来源）
-**说明**: 含云肩(31件)、荷包(46件)、绣裙(24件)、肚兜(12件)等 17 个品类
 
 ### 4. CulTi — 丝绸纹样+敦煌壁画
 
 **内容**: 5,726 组图像-文本对
 **获取**: https://github.com/yyyjjy/CulTi
 **许可**: 需签署数据使用协议
-**步骤**: 1. 填写 Data Usage Agreement → 2. 邮件发送 → 3. 获取解密密码
 
-### 5. 故宫博物院数字文物库
+### 5. 故宫博物院数字文物库 / 苏州丝绸纹样库
 
-**内容**: 10万+ 件珍贵文物高清影像（含大量宫廷服饰）
-**获取**: https://www.dpm.org.cn/explore/collections.html
+**内容**: 10万+ 件文物影像 / 10,000+ 个丝绸纹样
+**获取**: https://www.dpm.org.cn/explore/collections.html ｜ 苏州大数据交易所
 **许可**: 在线浏览免费，商用需授权
-**说明**: 支持颜色/纹饰/器型智能检索，支持超高清细节放大
+
+### 6. 其他可参考公开数据集（调研发现）
+
+| 数据集 | 规模 | 任务 | 备注 |
+|--------|------|------|------|
+| 中国民族服饰检测数据集 | 2,474 张 | YOLO/VOC 检测 | 涵盖 55 个少数民族 + 汉族 |
+| 中国少数民族服饰分类数据集 | 10,320 张 / 56 类 | 图像分类 | 含 miaozu(230)、hanzu(240) |
+| TEXMET | 18,644 张 | 纺织品图像 | CC0，Met Museum，最宽松 |
+| Met Museum Open Access | 10万+ 件 | 文物图像 | CC0 |
+
+> 备注：`tools/download_public_data.py`、`tools/crawl_images.py` 等脚本
+> 仍保留，可随时用于获取上述任一数据集。
 
 ### 6. 苏州丝绸纹样数据库
 

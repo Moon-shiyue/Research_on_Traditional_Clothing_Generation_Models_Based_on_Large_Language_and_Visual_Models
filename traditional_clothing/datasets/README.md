@@ -1,49 +1,79 @@
 # 传统服饰数据集
 
-> ⚠️ **重要说明：本仓库（GitHub）未包含任何图片数据文件**
+> ⚠️ **本仓库（GitHub）未包含任何图片数据文件**
 >
-> 由于图片数据总体积约 2GB，且 git 不适合托管二进制大文件，
-> **本仓库仅上传了下载脚本（`tools/` 目录），未上传任何图片文件**。
-> 所有图片均可通过下方脚本从原始来源重新下载获取，数据来源可溯、版权合规。
+> 图像数据总体积约 820MB（6,300 张），git 不适合托管二进制大文件，
+> 因此 **GitHub 上仅上传了标注数据与下载脚本，未上传图片文件**。
+> 图片可通过脚本从原始来源重新下载（见下方）。
 
 ## 数据集清单
 
-| 数据集 | 图片数 | 大小 | 来源 | 获取方式 |
-|--------|--------|------|------|----------|
-| Kaggle Chinese Traditional Clothing | 6,300 | 840MB | Roboflow/Kaggle | `tools/download_datasets.py` |
-| Met Museum TEXMET Expanded | 2,500+ | 478MB | Metropolitan Museum (CC0) | `tools/download_public_data.py` |
-| Wikimedia/Crawled | 334 | 480MB | Wikimedia Commons | `tools/crawl_images.py` |
-| Met Museum Original | 100 | 118MB | Metropolitan Museum (CC0) | `tools/download_images.py` |
-| **总计** | **~7,000** | **~2GB** | | |
+| 数据集 | 规模 | 标注 | 来源 | 状态 |
+|--------|------|------|------|------|
+| **Chinese-Traditional-Clothing Dataset** ⭐ | **6,300 张** | COCO 目标检测（8 类形制） | [Roboflow Universe](https://universe.roboflow.com/ctcdata/chinese-traditional-clothing-dataset) | ✅ **当前使用** |
+| 内置知识库 | 28 条 | 四级结构化标注 | 学术文献编码 | ✅ 已上传 GitHub |
+| 训练文本数据 | 518 条 | 文本配对 | 知识库 + 元数据 | ✅ 已上传 GitHub |
+| DSL 训练数据 | 660 条 | 文本-GarmentCode 配对 | 脚本合成 | ✅ 已上传 GitHub |
 
-## 图片数据获取方式（脚本重新下载）
+## ⭐ 主力数据集详情
 
-```bash
-# 1. 公开数据集（TEXMET 纺织品 + 中国传统女鞋，HuggingFace 源）
-python tools/download_public_data.py
+**Chinese-Traditional-Clothing Dataset**
 
-# 2. Kaggle 汉服检测数据集（需 kagglehub，首次运行需 Kaggle API 凭据）
-python tools/download_datasets.py
+| 项目 | 详情 |
+|------|------|
+| 来源 | [Roboflow Universe — ctcdata/chinese-traditional-clothing-dataset](https://universe.roboflow.com/ctcdata/chinese-traditional-clothing-dataset) |
+| 分发 | Kaggle: `xiaomeigou/chinesetraditionalclothing`（v4） |
+| 版本 | Roboflow **v12**（2023-05-02 导出） |
+| 图片数 | 6,300 张（train 5,820 / valid 310 / test 170） |
+| 标注 | COCO 格式，**24,562 个边界框** |
+| 类别（8 类形制） | AoQun 袄裙、DaoPao 道袍、Pao 袍、QuJu 曲裾、RuQun 襦裙、ZhiDuo 直裰、ZhiJu 直裾、ZhuZiShenYi 朱子深衣 |
+| 许可 | ⚠️ Roboflow 标注 `License: undefined`（未明确）——学术使用请注明来源，商用/再分发需联系作者 |
 
-# 3. Wikimedia Commons / MET 博物馆公开图像爬取
-python tools/crawl_images.py
+### ⚠️ 使用时注意事项
 
-# 4. 批量下载指定图像列表
-python tools/download_images.py
+1. **增强数据**：6,300 张中含 Roboflow 自动增强（约 4.1 倍），
+   **独立原图约 1,561 张**（文件名去掉 `.rf.<hash>` 后缀即为原图名）。
+2. **数据泄露**：约 40 张原图（2.6%）的增强版本跨越了 train/valid/test，
+   直接训练会导致验证指标虚高。**建议按原图名重新划分 split**：
+
+```python
+import os, re
+from collections import defaultdict
+
+orig2splits = defaultdict(set)
+for split in ("train", "valid", "test"):
+    for f in os.listdir(f"data/downloads/kaggle_chinese_clothing/{split}"):
+        if f.lower().endswith((".jpg", ".jpeg", ".png")):
+            orig = re.sub(r"\.rf\.[0-9a-f]+", "", f)   # 还原原图名
+            orig2splits[orig].add(split)
+# 同一原图的所有增强版本必须归入同一个 split
 ```
 
-下载完成后图片存放于 `data/images/` 与 `data/downloads/`（已被 `.gitignore` 排除，
-不会进入 git 仓库）。
+## 图片重新下载方式
 
-## 数据目录说明
+```bash
+# 主力数据集（Kaggle，需 kagglehub + Kaggle API 凭据）
+python tools/download_datasets.py
 
-- `data/images/` — 下载的图片（文物照片、汉服参考图、纹样素材），**未上传 GitHub**
-- `data/downloads/` — 外部数据集原始下载，**未上传 GitHub**
-- `data/annotations/` — 标注数据（JSONL 文本，已上传）
-- `data/dataset_index.json` — 28 条内置知识库索引（已上传，无需下载）
+# 可选：其他公开数据集（当前未使用，脚本保留）
+python tools/download_public_data.py    # TEXMET（CC0）、中国传统女鞋
+python tools/crawl_images.py            # Wikimedia Commons / Met Museum
+python tools/download_images.py         # 批量图像下载
+```
+
+下载后图片存放于 `data/downloads/`（已被 `.gitignore` 排除，不会进入 git 仓库）。
+
+## 目录说明
+
+- `data/downloads/kaggle_chinese_clothing/` — 主力数据集图片，**未上传 GitHub**
+- `data/downloads/kaggle_chinese_clothing/README.roboflow.txt` — 数据集官方说明（含来源、版本、许可）
+- `kaggle_annotations/` — COCO 格式标注文件（**已上传 GitHub**）
+- `data/annotations/` — 训练用 JSONL 数据（**已上传 GitHub**）
+- `data/dataset_index.json` — 28 条知识库（**已上传 GitHub**）
 
 ## 附注
 
-- 之前文档提到的 HuggingFace 托管地址（`shenx/traditional-chinese-clothing`）
-  尚未创建，当前以脚本重新下载为主。
-- 数据来源与许可详见 `../data/README.md`。
+- 数据集官方 README（`README.roboflow.txt` / `README.dataset.txt`）保留在
+  `data/downloads/kaggle_chinese_clothing/`，可核对来源与许可。
+- 其他调研发现的公开数据集（民族服饰检测 2,474 张、少数民族服饰分类 10,320 张、
+  TEXMET 18,644 张等）已登记在 `../data/README.md` 的"可选外部资源"章节。
