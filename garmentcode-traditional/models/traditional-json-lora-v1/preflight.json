@@ -1,0 +1,126 @@
+{
+  "environment": {
+    "python": "3.12.3",
+    "packages": {
+      "torch": "2.5.1+cu124",
+      "transformers": "4.46.2",
+      "peft": "0.13.2",
+      "accelerate": "1.15.0",
+      "safetensors": "0.8.0",
+      "PyYAML": "6.0.3"
+    },
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "cuda_version": "12.4"
+  },
+  "token_lengths": {
+    "train": {
+      "rows": 3416,
+      "max_tokens": 223,
+      "p95_tokens": 217,
+      "max_answer_tokens": 69,
+      "min_answer_tokens": 50
+    },
+    "val": {
+      "rows": 432,
+      "max_tokens": 223,
+      "p95_tokens": 217,
+      "max_answer_tokens": 69,
+      "min_answer_tokens": 50
+    },
+    "test": {
+      "rows": 432,
+      "max_tokens": 223,
+      "p95_tokens": 217,
+      "max_answer_tokens": 69,
+      "min_answer_tokens": 50
+    }
+  },
+  "system_prompt_sha256": "82be240f899e3559c01183f6df0dca5eeea908fbe60b5fc00dc509527763e81b",
+  "model_config_sha256": "422adefa19e62dd175961cec85bc0400344fe5bf9b22bd1182e05aaae78556e0",
+  "tokenizer_sha256": "cb63a0a23eef3d5b01063a9880a1925a65aaf4d1591d519910ee3527852950a0",
+  "dataset_stats": {
+    "version": "traditional-json-v1",
+    "seed": 42,
+    "source_sha256": "a3a2f42f53d21cfe5a0ef70b8a20d05cce144dcdeed44a8e9edaf75598d26b2f",
+    "template_sha256": "d493f38f6ce6ef64e26258fa26a1707a6c7315190fa5389928685f58939a1cac",
+    "source_rows": 2140,
+    "accepted_sources": 2140,
+    "rejected_sources": 0,
+    "raw_unique_geometry_groups": 418,
+    "raw_ambiguous_prompt_strings": 1070,
+    "excluded_prompt_rows": 2140,
+    "unseen_parameter_values": {
+      "val": {},
+      "test": {}
+    },
+    "schema_sha256": "f2e420371e445d86f72e078917cf63458832a5dd47a4213a8338602470823173",
+    "split_manifest_sha256": "e3d868a7ea1f0b99d562000fab2be8db9d772fe3c148d094fb654a0418eddcb6",
+    "splits": {
+      "train": {
+        "prompt_rows": 3416,
+        "source_rows": 1708,
+        "geometry_groups": 334,
+        "components": {
+          "banbi": 160,
+          "beizi": 64,
+          "cloud-shoulder": 80,
+          "cross-collar": 1040,
+          "duijin-collar": 168,
+          "mamian-skirt": 352,
+          "narrow-sleeve": 480,
+          "pipa-sleeve": 232,
+          "round-collar": 252,
+          "ruqun-skirt": 252,
+          "stand-collar": 84,
+          "wide-sleeve": 252
+        },
+        "sha256": "b15012a51db7d809e5526f13918c47399d24a550965561e5938fdcb15df59a3e"
+      },
+      "val": {
+        "prompt_rows": 432,
+        "source_rows": 216,
+        "geometry_groups": 42,
+        "components": {
+          "banbi": 16,
+          "beizi": 8,
+          "cloud-shoulder": 8,
+          "cross-collar": 128,
+          "duijin-collar": 24,
+          "mamian-skirt": 40,
+          "narrow-sleeve": 60,
+          "pipa-sleeve": 28,
+          "round-collar": 36,
+          "ruqun-skirt": 36,
+          "stand-collar": 12,
+          "wide-sleeve": 36
+        },
+        "sha256": "65aea03be77bd034edcddb1eb26c5ee71ceb733330629c7d10830a1e18eede1b"
+      },
+      "test": {
+        "prompt_rows": 432,
+        "source_rows": 216,
+        "geometry_groups": 42,
+        "components": {
+          "banbi": 16,
+          "beizi": 8,
+          "cloud-shoulder": 8,
+          "cross-collar": 128,
+          "duijin-collar": 24,
+          "mamian-skirt": 40,
+          "narrow-sleeve": 60,
+          "pipa-sleeve": 28,
+          "round-collar": 36,
+          "ruqun-skirt": 36,
+          "stand-collar": 12,
+          "wide-sleeve": 36
+        },
+        "sha256": "d62938f5bf9a91df669d756ceed86f3fb85457fbb31f124c10740b21edfab630"
+      }
+    },
+    "cross_split_geometry_prompt_and_id_overlap": 0
+  },
+  "answer_only_supervision": true,
+  "answer_truncation_count": 0,
+  "limits": "Preflight does not load full base weights, exercise CUDA, or demonstrate model quality."
+}

@@ -1,0 +1,15 @@
+{
+  "repo_id": "Qwen/Qwen2-VL-2B-Instruct",
+  "revision": "895c3a49bc3fa70a340399125c650a463535e71c",
+  "shards": {
+    "model-00001-of-00002.safetensors": {
+      "sha256": "994ac2b03f97de8bc647d0fe5eba2e4b632b3e28dc03574c29bdfc36cf47e1b9",
+      "size": 3988609112
+    },
+    "model-00002-of-00002.safetensors": {
+      "sha256": "92540d8353c8d226a589a3b179bdb33851c970ee2cc2ac7ba035f79425e7b833",
+      "size": 429441656
+    }
+  },
+  "note": "Both local training-base shards match official Hugging Face LFS SHA256. Small runtime/tokenizer files are the exact local training copies; retain them instead of using newer upstream configs."
+}

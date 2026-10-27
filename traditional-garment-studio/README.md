@@ -29,7 +29,7 @@ python -m uvicorn backend.app:app --host 127.0.0.1 --port 8000
 
 ## 模型与训练
 
-明确款式/参数的文字和云端识图后的参数制版不需下载本地大模型。本地自由文字LoRA推理及重新训练需要另行安装PyTorch、transformers==4.46.2、peft==0.13.2等训练依赖，下载基座并取得本项目适配器；见`../garmentcode-traditional/training/README.md`。权重不在Git仓库。
+明确款式/参数的文字和云端识图后的参数制版不需下载本地大模型。本地自由文字LoRA推理及重新训练需要另行安装PyTorch、transformers==4.46.2、peft==0.13.2等训练依赖，下载基座并加载随仓库发布的本项目适配器；见`../garmentcode-traditional/training/README.md`。LoRA适配器位于`../garmentcode-traditional/models/traditional-json-lora-v1/`；约4.42GB官方基座通过复现工具按固定版本下载并校验。
 
 可设置`GARMENT_ROOT`、`GARMENT_MODEL_PATH`、`GARMENT_ADAPTER_PATH`和`GARMENT_RUNTIME_DIR`。默认代码资源指向同级`garmentcode-traditional/`；模型/适配器不存在时，不能把自由文字推理当作可用功能。
 

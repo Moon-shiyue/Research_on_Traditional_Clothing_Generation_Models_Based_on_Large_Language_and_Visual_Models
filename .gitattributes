@@ -7,3 +7,24 @@ garmentcode-traditional/data/** -text
 garmentcode-traditional/assets/design_params/traditional.yaml -text
 garmentcode-traditional/assets/bodies/mean_female.yaml -text
 garmentcode-traditional/traditional_ext/build_dataset.py -text
+
+# Exact training references and release evidence must retain original bytes.
+garmentcode-traditional/assets/bodies/body_params.py -text
+garmentcode-traditional/assets/bodies/mean_female.yaml -text
+garmentcode-traditional/assets/design_params/traditional.yaml -text
+garmentcode-traditional/data/traditional_design_dataset.jsonl -text
+garmentcode-traditional/pygarment/garmentcode/panel.py -text
+garmentcode-traditional/traditional_ext/accessories.py -text
+garmentcode-traditional/traditional_ext/build_dataset.py -text
+garmentcode-traditional/traditional_ext/collars.py -text
+garmentcode-traditional/traditional_ext/collars_extra.py -text
+garmentcode-traditional/traditional_ext/mamian_skirt.py -text
+garmentcode-traditional/traditional_ext/skirts_extra.py -text
+garmentcode-traditional/traditional_ext/sleeves.py -text
+garmentcode-traditional/traditional_ext/sleeves_extra.py -text
+garmentcode-traditional/models/traditional-json-lora-v1/** -text
+
+# Avoid rendering machine-generated tokenizer vocabularies as huge diffs.
+garmentcode-traditional/models/traditional-json-lora-v1/base_runtime/tokenizer.json -diff
+garmentcode-traditional/models/traditional-json-lora-v1/base_runtime/vocab.json -diff
+garmentcode-traditional/models/traditional-json-lora-v1/base_runtime/merges.txt -diff

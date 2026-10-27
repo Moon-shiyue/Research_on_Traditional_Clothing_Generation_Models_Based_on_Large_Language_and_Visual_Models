@@ -31,3 +31,8 @@
 *.zip
 *.tgz
 *.log
+
+/reproduction-v1/
+!garmentcode-traditional/models/traditional-json-lora-v1/adapter_model.safetensors
+!garmentcode-traditional/models/traditional-json-lora-v1/base_runtime/tokenizer.json
+!garmentcode-traditional/models/traditional-json-lora-v1/base_runtime/tokenizer_config.json

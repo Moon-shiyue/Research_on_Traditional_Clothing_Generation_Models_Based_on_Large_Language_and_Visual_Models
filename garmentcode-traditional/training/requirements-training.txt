@@ -1,0 +1,15 @@
+# Python 3.12.3/Linux/RTX 4090. Install torch==2.5.1 from cu124 separately.
+transformers==4.46.2
+peft==0.13.2
+accelerate==1.15.0
+safetensors==0.8.0
+PyYAML==6.0.3
+# Geometry versions from release validation; original server did not record these.
+numpy==1.26.4
+scipy==1.13.1
+svgpathtools==1.7.2
+svgwrite==1.4.3
+matplotlib==3.9.4
+CairoSVG==2.7.1
+Pillow==11.3.0
+psutil==6.0.0

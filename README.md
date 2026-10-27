@@ -119,4 +119,4 @@ print("通过:", report.passed)
 
 新增`traditional-garment-studio/`：Vue前端＋FastAPI后端，支持图片/文字到完整整件或整套二维纸样、厘米尺寸编辑、ZIP/A4导出和历史恢复。资源与训练代码在同级`garmentcode-traditional/`。原有`traditional_clothing/`保持独立。
 
-先阅读[软件安装和演示说明](traditional-garment-studio/README.md)，安装根目录`requirements-demo.txt`及前端npm依赖。图片识别需自行配置可用视觉来源；大模型/LoRA权重、账号、密钥、历史结果和服饰原图均不随本次代码发布。来源说明见[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+先阅读[软件安装和演示说明](traditional-garment-studio/README.md)，安装根目录`requirements-demo.txt`及前端npm依赖。图片识别需自行配置可用视觉来源；账号、密钥、软件历史结果和服饰原图不随代码发布。实际训练好的LoRA、冻结数据与原始训练评测已提供，官方基座通过固定版本下载并校验；请阅读[训练结果复现指南](garmentcode-traditional/training/REPRODUCING.md)。来源说明见[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。

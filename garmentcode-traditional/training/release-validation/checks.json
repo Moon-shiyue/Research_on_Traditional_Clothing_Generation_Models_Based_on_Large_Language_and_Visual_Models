@@ -1,0 +1,22 @@
+{
+  "release_date": "2026-10-27",
+  "release_files_verified": 35,
+  "training_reference_files_verified": 13,
+  "clean_git_index_checkout_verified": true,
+  "training_pipeline_tests": 13,
+  "training_pipeline_failures": 0,
+  "archived_test_rows": 432,
+  "archived_metric_groups_match": {
+    "overall": true,
+    "macro": true,
+    "per_component": true,
+    "numeric_mae": true
+  },
+  "fresh_gpu_smoke_rows": 24,
+  "fresh_gpu_identical_to_server": 24,
+  "full_gpu_test_rerun_this_release": false,
+  "retrained_this_release": false,
+  "fresh_clean_python_environment_tested": false,
+  "base_shards_match_official_lfs": true,
+  "base_download_validation": "Existing local official shard copies verified by SHA256; full network re-download not performed."
+}

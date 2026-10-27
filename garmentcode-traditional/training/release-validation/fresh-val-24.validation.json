@@ -1,0 +1,52 @@
+{
+  "scope": "Fresh 24-example balanced validation smoke covering all 12 components; not a full 432-example GPU rerun or retraining.",
+  "environment": {
+    "python": "3.9.19",
+    "packages": {
+      "torch": "2.4.0+cu121",
+      "transformers": "4.46.2",
+      "peft": "0.13.2",
+      "accelerate": "1.1.1",
+      "safetensors": "0.5.3",
+      "PyYAML": "6.0.2"
+    },
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4070 Laptop GPU",
+    "cuda_version": "12.1"
+  },
+  "comparison_to_original_server_predictions": {
+    "rows": 24,
+    "identical_predictions": 24,
+    "changed_ids": []
+  },
+  "metrics": {
+    "rows": 24,
+    "missing_predictions": 0,
+    "json_object_valid": 1.0,
+    "schema_valid": 1.0,
+    "component_correct": 1.0,
+    "required_fields_complete": 1.0,
+    "config_match": 1.0,
+    "form_pass": 1.0,
+    "execution_success": 1.0,
+    "geometry_finite": 1.0,
+    "runtime_warning_free": 0.9166666666666666,
+    "field_accuracy": 1.0,
+    "numeric_accuracy": 1.0,
+    "categorical_accuracy": 1.0
+  },
+  "components": [
+    "banbi",
+    "beizi",
+    "cloud-shoulder",
+    "cross-collar",
+    "duijin-collar",
+    "mamian-skirt",
+    "narrow-sleeve",
+    "pipa-sleeve",
+    "round-collar",
+    "ruqun-skirt",
+    "stand-collar",
+    "wide-sleeve"
+  ]
+}

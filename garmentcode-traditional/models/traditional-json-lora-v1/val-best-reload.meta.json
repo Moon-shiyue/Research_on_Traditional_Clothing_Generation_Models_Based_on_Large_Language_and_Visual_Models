@@ -1,0 +1,26 @@
+{
+  "model": "/root/autodl-tmp/garmentcode-traditional/lmm_utils/Qwen/Qwen2-VL-2B-Instruct",
+  "adapter": "/root/autodl-tmp/garmentcode-traditional/runs/traditional-json-lora-v1",
+  "environment": {
+    "python": "3.12.3",
+    "packages": {
+      "torch": "2.5.1+cu124",
+      "transformers": "4.46.2",
+      "peft": "0.13.2",
+      "accelerate": "1.15.0",
+      "safetensors": "0.8.0",
+      "PyYAML": "6.0.3"
+    },
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "cuda_version": "12.4"
+  },
+  "rows": 432,
+  "split": "val",
+  "ground_truth_sha256": "65aea03be77bd034edcddb1eb26c5ee71ceb733330629c7d10830a1e18eede1b",
+  "system_prompt_sha256": "82be240f899e3559c01183f6df0dca5eeea908fbe60b5fc00dc509527763e81b",
+  "max_new_tokens": 256,
+  "do_sample": false,
+  "generation_tf32": true,
+  "generation_hit_limit_count": 0
+}

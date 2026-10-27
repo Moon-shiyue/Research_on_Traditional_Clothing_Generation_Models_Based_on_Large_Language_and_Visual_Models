@@ -1,0 +1,6 @@
+{
+  "finite_gradients_for_all_trainable_tensors": true,
+  "nonzero_gradient_tensors": 112,
+  "trainable_tensors": 224,
+  "global_step_before_update": 0
+}

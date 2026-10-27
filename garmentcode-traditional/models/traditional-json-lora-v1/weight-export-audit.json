@@ -1,0 +1,10 @@
+{
+  "first_tensors": 224,
+  "second_tensors": 224,
+  "missing": [],
+  "extra": [],
+  "different_tensors": [],
+  "tensor_values_identical": true,
+  "first_sha256": "4f9956463a1209ec485ae4cf96fb49eebef93128e49fe7d53d49620767e80209",
+  "second_sha256": "4f9956463a1209ec485ae4cf96fb49eebef93128e49fe7d53d49620767e80209"
+}
