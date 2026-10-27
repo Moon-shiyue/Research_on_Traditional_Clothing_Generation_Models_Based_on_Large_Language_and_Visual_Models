@@ -1,0 +1,9 @@
+* text=auto
+*.py text eol=lf
+*.sh text eol=lf
+*.cmd text eol=crlf
+# Frozen training inputs are hashed byte-for-byte. Do not normalize them.
+garmentcode-traditional/data/** -text
+garmentcode-traditional/assets/design_params/traditional.yaml -text
+garmentcode-traditional/assets/bodies/mean_female.yaml -text
+garmentcode-traditional/traditional_ext/build_dataset.py -text

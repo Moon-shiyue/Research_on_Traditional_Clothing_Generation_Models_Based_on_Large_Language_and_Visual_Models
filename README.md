@@ -113,3 +113,10 @@ print("通过:", report.passed)
 学术使用请注明来源，商用/再分发前请联系作者确认。
 
 **文本与知识数据**：基于学术文献与博物馆公开信息编码，详见 `traditional_clothing/data/`。
+
+
+## 可运行的图文二维制版软件（2026-10-27）
+
+新增`traditional-garment-studio/`：Vue前端＋FastAPI后端，支持图片/文字到完整整件或整套二维纸样、厘米尺寸编辑、ZIP/A4导出和历史恢复。资源与训练代码在同级`garmentcode-traditional/`。原有`traditional_clothing/`保持独立。
+
+先阅读[软件安装和演示说明](traditional-garment-studio/README.md)，安装根目录`requirements-demo.txt`及前端npm依赖。图片识别需自行配置可用视觉来源；大模型/LoRA权重、账号、密钥、历史结果和服饰原图均不随本次代码发布。来源说明见[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。

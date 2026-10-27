@@ -1,0 +1,15 @@
+{
+  "assets/bodies/body_params.py": "f70dedc554afe264daddb0d10e33d727e9b14d9629e5bbdff1b467308fc17669",
+  "assets/bodies/mean_female.yaml": "f546774b3e2e5acb476766d8aeaca6880b107281a28cde73123b5212f88023f5",
+  "assets/design_params/traditional.yaml": "d493f38f6ce6ef64e26258fa26a1707a6c7315190fa5389928685f58939a1cac",
+  "data/traditional_design_dataset.jsonl": "a3a2f42f53d21cfe5a0ef70b8a20d05cce144dcdeed44a8e9edaf75598d26b2f",
+  "pygarment/garmentcode/panel.py": "9174f2aaf09fa7b2ef239b600db9cdad616a11886e0bb78bdbc7e1e0cf77645e",
+  "traditional_ext/accessories.py": "a2122acba7218f7cffb26eccaf936634e049958e646f70a73539f3880d8a51bf",
+  "traditional_ext/build_dataset.py": "cdba10692a236157a8eb036fbea7806e4dd6f0f71251bcb7ba9ff8ac7e02e8a4",
+  "traditional_ext/collars.py": "85a012e6fcc8ce1570443a0033f2b00277a0450d5b5ba91202ca20c9b67692e6",
+  "traditional_ext/collars_extra.py": "52527c324eda162779603e0476b2591adb843a5d1ec328493df4486758f33735",
+  "traditional_ext/mamian_skirt.py": "1d9a664c83c4386cf89267e5d7fb4b6a5ab614b60747a15ca80b1c7b6a9f07ca",
+  "traditional_ext/skirts_extra.py": "bfb34c2d25b56fe69cb7a238a25e5a08a5b7cb6e8a6678402dc99bf31790564d",
+  "traditional_ext/sleeves.py": "d5206f7f3ed67fed75b399681a7c21c9109ca254b9b9f7172f2a8e3f0640946b",
+  "traditional_ext/sleeves_extra.py": "0b9b9565156707cc4f8db19c7ed5d9f165ef51ed9b50be15f72ffbe1262f4a03"
+}

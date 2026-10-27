@@ -1,0 +1,18 @@
+{
+  "template_only": true,
+  "image_path": "TODO: verified image path",
+  "garment_entity_id": "TODO: group all views of the same garment together",
+  "source": {"url_or_catalog_id": null, "usage_permission": null, "page_or_accession": null},
+  "view": "unknown",
+  "occlusion": "unknown",
+  "visible_components": [],
+  "visible_attributes": {},
+  "dynasty": {"label": "unknown", "evidence": null},
+  "occasion": {"label": "unknown", "evidence": null},
+  "paired_design": null,
+  "paired_design_measurement_source": null,
+  "annotator": null,
+  "reviewer": null,
+  "review_status": "draft",
+  "notes": "Do not infer exact garment dimensions or a historical label from appearance alone. This file is not a training example."
+}

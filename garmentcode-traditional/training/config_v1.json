@@ -1,0 +1,20 @@
+{
+  "model_path": "lmm_utils/Qwen/Qwen2-VL-2B-Instruct",
+  "data_dir": "data/training_v1",
+  "template_path": "assets/design_params/traditional.yaml",
+  "output_dir": "runs/traditional-json-lora-v1",
+  "seed": 42,
+  "max_length": 1024,
+  "max_new_tokens": 256,
+  "lora_rank": 16,
+  "lora_alpha": 32,
+  "lora_dropout": 0.05,
+  "learning_rate": 0.00005,
+  "epochs": 3,
+  "micro_batch_size": 1,
+  "gradient_accumulation_steps": 16,
+  "warmup_ratio": 0.05,
+  "weight_decay": 0.01,
+  "logging_steps": 10,
+  "generation_batch_size": 1
+}

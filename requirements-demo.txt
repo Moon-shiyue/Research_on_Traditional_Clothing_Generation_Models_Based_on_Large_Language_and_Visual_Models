@@ -1,0 +1,10 @@
+# CPU geometry + HTTP demo; local Qwen weights are optional and separate.
+-r traditional-garment-studio/backend/requirements.txt
+numpy==1.26.4
+scipy==1.13.1
+svgpathtools==1.7.2
+svgwrite==1.4.3
+PyYAML==6.0.2
+Pillow==11.3.0
+psutil==6.0.0
+matplotlib==3.9.4

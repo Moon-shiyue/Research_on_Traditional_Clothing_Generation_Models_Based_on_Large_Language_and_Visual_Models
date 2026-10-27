@@ -1,0 +1,10 @@
+# HTTP layer only; use alongside the garment project's geometry/model environment.
+fastapi==0.109.2
+uvicorn==0.35.0
+python-multipart==0.0.20
+httpx==0.27.2
+PyJWT[crypto]==2.10.1
+# Actual-size A4 vector PDF export, alongside the existing geometry environment.
+CairoSVG==2.7.1
+reportlab==4.4.9
+pypdf==6.10.0

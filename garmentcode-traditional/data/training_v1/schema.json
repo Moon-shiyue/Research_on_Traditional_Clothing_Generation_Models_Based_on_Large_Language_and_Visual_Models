@@ -1,0 +1,863 @@
+{
+  "version": "traditional-json-v1",
+  "source_sha256": "a3a2f42f53d21cfe5a0ef70b8a20d05cce144dcdeed44a8e9edaf75598d26b2f",
+  "template_sha256": "d493f38f6ce6ef64e26258fa26a1707a6c7315190fa5389928685f58939a1cac",
+  "components": {
+    "mamian-skirt": {
+      "fields": {
+        "length": {
+          "type": "float",
+          "bounds": [
+            0.55,
+            0.85
+          ],
+          "training_values": [
+            0.55,
+            0.7,
+            0.85
+          ],
+          "labels": {
+            "knee-length": 0.55,
+            "midi": 0.7,
+            "floor-length": 0.85
+          }
+        },
+        "mamian_width": {
+          "type": "float",
+          "bounds": [
+            20.0,
+            35.0
+          ],
+          "training_values": [
+            20.0,
+            28.0,
+            35.0
+          ],
+          "labels": {
+            "narrow": 20.0,
+            "standard": 28.0,
+            "wide": 35.0
+          }
+        },
+        "pleat_ruffle": {
+          "type": "float",
+          "bounds": [
+            1.4,
+            2.4
+          ],
+          "training_values": [
+            1.4,
+            1.8,
+            2.4
+          ],
+          "labels": {
+            "light": 1.4,
+            "medium": 1.8,
+            "rich": 2.4
+          }
+        },
+        "rise": {
+          "type": "float",
+          "bounds": [
+            0.55,
+            0.95
+          ],
+          "training_values": [
+            0.55,
+            0.75,
+            0.95
+          ],
+          "labels": {
+            "low": 0.55,
+            "mid": 0.75,
+            "high": 0.95
+          }
+        }
+      },
+      "contexts": {
+        "dynasty": [
+          "Ming",
+          "Qing"
+        ],
+        "occasion": [
+          "Changfu",
+          "Lifu"
+        ]
+      }
+    },
+    "pipa-sleeve": {
+      "fields": {
+        "length": {
+          "type": "float",
+          "bounds": [
+            0.7,
+            1.15
+          ],
+          "training_values": [
+            0.7,
+            0.95,
+            1.15
+          ],
+          "labels": {
+            "short": 0.7,
+            "standard": 0.95,
+            "long": 1.15
+          }
+        },
+        "cuff_width": {
+          "type": "float",
+          "bounds": [
+            12.0,
+            18.0
+          ],
+          "training_values": [
+            12.0,
+            15.0,
+            18.0
+          ],
+          "labels": {
+            "narrow": 12.0,
+            "standard": 15.0,
+            "wide": 18.0
+          }
+        },
+        "root_width": {
+          "type": "float",
+          "bounds": [
+            18.0,
+            27.0
+          ],
+          "training_values": [
+            18.0,
+            22.0,
+            27.0
+          ],
+          "labels": {
+            "narrow": 18.0,
+            "standard": 22.0,
+            "wide": 27.0
+          }
+        },
+        "bulge_width": {
+          "type": "float",
+          "bounds": [
+            28.0,
+            42.0
+          ],
+          "training_values": [
+            28.0,
+            35.0,
+            42.0
+          ],
+          "labels": {
+            "slight": 28.0,
+            "standard": 35.0,
+            "rich": 42.0
+          }
+        }
+      },
+      "contexts": {
+        "dynasty": [
+          "Ming"
+        ],
+        "occasion": [
+          "Changfu",
+          "Lifu"
+        ]
+      }
+    },
+    "stand-collar": {
+      "fields": {
+        "collar_height": {
+          "type": "float",
+          "bounds": [
+            2.5,
+            5.0
+          ],
+          "training_values": [
+            2.5,
+            3.5,
+            5.0
+          ],
+          "labels": {
+            "ming-low": 2.5,
+            "ming-high": 3.5,
+            "qing": 5.0
+          }
+        },
+        "collar_flare": {
+          "type": "float",
+          "bounds": [
+            0.0,
+            12.0
+          ],
+          "training_values": [
+            0.0,
+            5.0,
+            12.0
+          ],
+          "labels": {
+            "straight": 0.0,
+            "slight": 5.0,
+            "flared": 12.0
+          }
+        },
+        "top_curve": {
+          "type": "float",
+          "bounds": [
+            0.0,
+            3.0
+          ],
+          "training_values": [
+            0.0,
+            1.5,
+            3.0
+          ],
+          "labels": {
+            "flat": 0.0,
+            "slight": 1.5,
+            "curved": 3.0
+          }
+        }
+      },
+      "contexts": {
+        "dynasty": [
+          "Ming",
+          "Qing"
+        ],
+        "occasion": [
+          "Changfu",
+          "Chaofu"
+        ]
+      }
+    },
+    "cross-collar": {
+      "fields": {
+        "collar_depth": {
+          "type": "float",
+          "bounds": [
+            18.0,
+            33.0
+          ],
+          "training_values": [
+            18.0,
+            25.0,
+            33.0
+          ],
+          "labels": {
+            "shallow": 18.0,
+            "standard": 25.0,
+            "deep": 33.0
+          }
+        },
+        "cross_angle": {
+          "type": "float",
+          "bounds": [
+            35.0,
+            65.0
+          ],
+          "training_values": [
+            35.0,
+            50.0,
+            65.0
+          ],
+          "labels": {
+            "narrow": 35.0,
+            "standard": 50.0,
+            "wide": 65.0
+          }
+        },
+        "overlap_amount": {
+          "type": "float",
+          "bounds": [
+            5.0,
+            12.0
+          ],
+          "training_values": [
+            5.0,
+            8.0,
+            12.0
+          ],
+          "labels": {
+            "slight": 5.0,
+            "standard": 8.0,
+            "deep": 12.0
+          }
+        },
+        "border_width": {
+          "type": "float",
+          "bounds": [
+            1.5,
+            5.0
+          ],
+          "training_values": [
+            1.5,
+            3.0,
+            5.0
+          ],
+          "labels": {
+            "narrow": 1.5,
+            "standard": 3.0,
+            "wide": 5.0
+          }
+        }
+      },
+      "contexts": {
+        "dynasty": [
+          "Han",
+          "Tang",
+          "Song",
+          "Ming"
+        ],
+        "occasion": [
+          "Changfu",
+          "Lifu"
+        ]
+      }
+    },
+    "round-collar": {
+      "fields": {
+        "front_depth": {
+          "type": "float",
+          "bounds": [
+            7.0,
+            15.0
+          ],
+          "training_values": [
+            7.0,
+            10.0,
+            15.0
+          ],
+          "labels": {
+            "shallow": 7.0,
+            "standard": 10.0,
+            "deep": 15.0
+          }
+        },
+        "back_depth": {
+          "type": "float",
+          "bounds": [
+            2.5,
+            6.0
+          ],
+          "training_values": [
+            2.5,
+            4.0,
+            6.0
+          ],
+          "labels": {
+            "shallow": 2.5,
+            "standard": 4.0,
+            "deep": 6.0
+          }
+        },
+        "border_width": {
+          "type": "float",
+          "bounds": [
+            1.2,
+            4.5
+          ],
+          "training_values": [
+            1.2,
+            2.5,
+            4.5
+          ],
+          "labels": {
+            "narrow": 1.2,
+            "standard": 2.5,
+            "wide": 4.5
+          }
+        }
+      },
+      "contexts": {
+        "dynasty": [
+          "Tang",
+          "Song",
+          "Ming"
+        ],
+        "occasion": [
+          "Changfu",
+          "Chaofu"
+        ]
+      }
+    },
+    "duijin-collar": {
+      "fields": {
+        "front_width": {
+          "type": "float",
+          "bounds": [
+            5.0,
+            12.0
+          ],
+          "training_values": [
+            5.0,
+            8.0,
+            12.0
+          ],
+          "labels": {
+            "narrow": 5.0,
+            "standard": 8.0,
+            "wide": 12.0
+          }
+        },
+        "neck_depth": {
+          "type": "float",
+          "bounds": [
+            8.0,
+            18.0
+          ],
+          "training_values": [
+            8.0,
+            12.0,
+            18.0
+          ],
+          "labels": {
+            "shallow": 8.0,
+            "standard": 12.0,
+            "deep": 18.0
+          }
+        },
+        "placket_width": {
+          "type": "float",
+          "bounds": [
+            2.0,
+            5.0
+          ],
+          "training_values": [
+            2.0,
+            3.0,
+            5.0
+          ],
+          "labels": {
+            "narrow": 2.0,
+            "standard": 3.0,
+            "wide": 5.0
+          }
+        }
+      },
+      "contexts": {
+        "dynasty": [
+          "Song",
+          "Ming"
+        ],
+        "occasion": [
+          "Changfu",
+          "Lifu"
+        ]
+      }
+    },
+    "wide-sleeve": {
+      "fields": {
+        "length": {
+          "type": "float",
+          "bounds": [
+            0.85,
+            1.25
+          ],
+          "training_values": [
+            0.85,
+            1.05,
+            1.25
+          ],
+          "labels": {
+            "short": 0.85,
+            "standard": 1.05,
+            "long": 1.25
+          }
+        },
+        "cuff_width": {
+          "type": "float",
+          "bounds": [
+            45.0,
+            90.0
+          ],
+          "training_values": [
+            45.0,
+            60.0,
+            90.0
+          ],
+          "labels": {
+            "moderate": 45.0,
+            "standard": 60.0,
+            "grand": 90.0
+          }
+        },
+        "root_width": {
+          "type": "float",
+          "bounds": [
+            16.0,
+            25.0
+          ],
+          "training_values": [
+            16.0,
+            20.0,
+            25.0
+          ],
+          "labels": {
+            "narrow": 16.0,
+            "standard": 20.0,
+            "wide": 25.0
+          }
+        }
+      },
+      "contexts": {
+        "dynasty": [
+          "Han",
+          "WeiJin",
+          "Tang"
+        ],
+        "occasion": [
+          "Lifu",
+          "Changfu"
+        ]
+      }
+    },
+    "narrow-sleeve": {
+      "fields": {
+        "length": {
+          "type": "float",
+          "bounds": [
+            1.0,
+            1.4
+          ],
+          "training_values": [
+            1.0,
+            1.2,
+            1.4
+          ],
+          "labels": {
+            "short": 1.0,
+            "standard": 1.2,
+            "long": 1.4
+          }
+        },
+        "cuff_width": {
+          "type": "float",
+          "bounds": [
+            14.0,
+            22.0
+          ],
+          "training_values": [
+            14.0,
+            18.0,
+            22.0
+          ],
+          "labels": {
+            "narrow": 14.0,
+            "standard": 18.0,
+            "wide": 22.0
+          }
+        },
+        "root_width": {
+          "type": "float",
+          "bounds": [
+            17.0,
+            24.0
+          ],
+          "training_values": [
+            17.0,
+            20.0,
+            24.0
+          ],
+          "labels": {
+            "narrow": 17.0,
+            "standard": 20.0,
+            "wide": 24.0
+          }
+        },
+        "elbow_width": {
+          "type": "float",
+          "bounds": [
+            20.0,
+            26.0
+          ],
+          "training_values": [
+            20.0,
+            22.0,
+            26.0
+          ],
+          "labels": {
+            "slight": 20.0,
+            "standard": 22.0,
+            "loose": 26.0
+          }
+        }
+      },
+      "contexts": {
+        "dynasty": [
+          "Han",
+          "Tang",
+          "Song",
+          "Ming",
+          "Qing"
+        ],
+        "occasion": [
+          "Changfu",
+          "Bianfu"
+        ]
+      }
+    },
+    "ruqun-skirt": {
+      "fields": {
+        "length": {
+          "type": "float",
+          "bounds": [
+            0.55,
+            0.85
+          ],
+          "training_values": [
+            0.55,
+            0.7,
+            0.85
+          ],
+          "labels": {
+            "knee-length": 0.55,
+            "midi": 0.7,
+            "floor-length": 0.85
+          }
+        },
+        "hem_ratio": {
+          "type": "float",
+          "bounds": [
+            1.8,
+            3.5
+          ],
+          "training_values": [
+            1.8,
+            2.5,
+            3.5
+          ],
+          "labels": {
+            "moderate": 1.8,
+            "full": 2.5,
+            "grand": 3.5
+          }
+        },
+        "waist_position": {
+          "type": "float",
+          "bounds": [
+            0.7,
+            0.95
+          ],
+          "training_values": [
+            0.7,
+            0.85,
+            0.95
+          ],
+          "labels": {
+            "mid": 0.7,
+            "high": 0.85,
+            "chest": 0.95
+          }
+        }
+      },
+      "contexts": {
+        "dynasty": [
+          "Han",
+          "Tang",
+          "Song"
+        ],
+        "occasion": [
+          "Changfu",
+          "Lifu"
+        ]
+      }
+    },
+    "cloud-shoulder": {
+      "fields": {
+        "layers": {
+          "type": "int",
+          "bounds": [
+            1,
+            3
+          ],
+          "training_values": [
+            1,
+            2,
+            3
+          ],
+          "labels": {
+            "single": 1,
+            "double": 2,
+            "triple": 3
+          }
+        },
+        "petal_count": {
+          "type": "int",
+          "bounds": [
+            4,
+            8
+          ],
+          "training_values": [
+            4,
+            6,
+            8
+          ],
+          "labels": {
+            "sparse": 4,
+            "standard": 6,
+            "dense": 8
+          }
+        },
+        "tassel_length": {
+          "type": "float",
+          "bounds": [
+            0.0,
+            12.0
+          ],
+          "training_values": [
+            0.0,
+            6.0,
+            12.0
+          ],
+          "labels": {
+            "none": 0.0,
+            "short": 6.0,
+            "long": 12.0
+          }
+        }
+      },
+      "contexts": {
+        "dynasty": [
+          "Ming",
+          "Qing"
+        ],
+        "occasion": [
+          "Lifu",
+          "Changfu"
+        ]
+      }
+    },
+    "beizi": {
+      "fields": {
+        "length": {
+          "type": "float",
+          "bounds": [
+            0.75,
+            1.25
+          ],
+          "training_values": [
+            0.75,
+            1.0,
+            1.25
+          ],
+          "labels": {
+            "knee": 0.75,
+            "midi": 1.0,
+            "ankle": 1.25
+          }
+        },
+        "slit_height": {
+          "type": "float",
+          "bounds": [
+            0.3,
+            0.6
+          ],
+          "training_values": [
+            0.3,
+            0.45,
+            0.6
+          ],
+          "labels": {
+            "low": 0.3,
+            "standard": 0.45,
+            "high": 0.6
+          }
+        },
+        "sleeve_length": {
+          "type": "float",
+          "bounds": [
+            0.7,
+            1.05
+          ],
+          "training_values": [
+            0.7,
+            0.9,
+            1.05
+          ],
+          "labels": {
+            "short": 0.7,
+            "standard": 0.9,
+            "long": 1.05
+          }
+        }
+      },
+      "contexts": {
+        "dynasty": [
+          "Song",
+          "Ming"
+        ],
+        "occasion": [
+          "Changfu",
+          "Lifu"
+        ]
+      }
+    },
+    "banbi": {
+      "fields": {
+        "length": {
+          "type": "float",
+          "bounds": [
+            0.5,
+            0.78
+          ],
+          "training_values": [
+            0.5,
+            0.62,
+            0.78
+          ],
+          "labels": {
+            "short": 0.5,
+            "standard": 0.62,
+            "long": 0.78
+          }
+        },
+        "sleeve_length": {
+          "type": "float",
+          "bounds": [
+            0.32,
+            0.6
+          ],
+          "training_values": [
+            0.32,
+            0.45,
+            0.6
+          ],
+          "labels": {
+            "short": 0.32,
+            "standard": 0.45,
+            "long": 0.6
+          }
+        },
+        "sleeve_width": {
+          "type": "float",
+          "bounds": [
+            14.0,
+            24.0
+          ],
+          "training_values": [
+            14.0,
+            18.0,
+            24.0
+          ],
+          "labels": {
+            "narrow": 14.0,
+            "standard": 18.0,
+            "wide": 24.0
+          }
+        }
+      },
+      "contexts": {
+        "dynasty": [
+          "Tang",
+          "Song"
+        ],
+        "occasion": [
+          "Changfu",
+          "Bianfu"
+        ]
+      }
+    }
+  },
+  "note": "Contexts and form rules are project dataset conventions, not independently verified historical claims."
+}

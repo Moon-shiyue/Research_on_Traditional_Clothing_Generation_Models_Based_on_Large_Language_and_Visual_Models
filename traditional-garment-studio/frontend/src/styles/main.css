@@ -1,0 +1,145 @@
+/* 全局 border-box：避免 height:100% + padding 撑破容器（曾导致聊天输入框被裁） */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 主题色对齐原 NiceGUI 配色（gui/callbacks.py::theme_colors） */
+:root {
+  --el-color-primary: #5c5d71;
+  --el-color-primary-light-3: #8d8e9c;
+  --el-color-primary-light-5: #adaeb8;
+  --el-color-primary-light-7: #ceced4;
+  --el-color-primary-light-8: #dedfe3;
+  --el-color-primary-light-9: #efeff1;
+  --el-color-primary-dark-2: #4a4a5a;
+  --el-color-danger: #f50000;
+  --el-color-success: #22ba38;
+  --el-color-info: #31ccec;
+  --el-color-warning: #9333ea;
+  --c-header-bg: #5c5d71;
+  --c-footer-bg: #333333;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', Arial, sans-serif;
+  font-size: 14px;
+  color: #303133;
+  overflow: hidden;
+  background: #e8e9ee;
+  box-sizing: border-box;
+  padding: 12px;
+}
+
+#app {
+  box-sizing: border-box;
+}
+
+.app-shell {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+
+.main-row {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.service-error { display: flex; gap: 8px; padding: 8px; }
+
+/* The print summary and download action must fit the in-app narrow viewport. */
+.el-dialog.print-dialog { max-height: 90vh; display: flex; flex-direction: column; }
+.el-dialog.print-dialog .el-dialog__body { min-height: 0; overflow: auto; }
+.el-dialog.print-dialog .el-dialog__header,
+.el-dialog.print-dialog .el-dialog__footer { flex-shrink: 0; }
+
+@media (max-width: 800px) {
+  body { padding: 4px; overflow: auto; }
+  #app, .app-shell { height: auto; min-height: 100%; }
+  .main-row { flex-direction: column; overflow: visible; }
+  .left-panel { width: 100% !important; height: 440px; flex-shrink: 0; border-right: none; }
+  .right-panel { height: 600px; flex-shrink: 0; }
+}
+
+/* 左侧面板（参数/聊天） */
+.left-panel {
+  border-right: 1px solid #e4e7ed;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.left-panel .el-tabs {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.left-panel .el-tabs__header {
+  margin-bottom: 0;
+  padding-left: 10px;
+}
+.left-panel .el-tabs__content {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.left-panel .el-tab-pane {
+  height: 100%;
+}
+
+/* 右侧视图区 */
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+.right-panel .el-tabs {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.right-panel .el-tabs__content {
+  flex: 1;
+  min-height: 0;
+}
+.right-panel .el-tabs__header {
+  padding-left: 10px;
+}
+.right-panel .el-tab-pane {
+  height: 100%;
+}
+
+/* 参数组折叠面板 */
+.param-group .el-collapse-item__header {
+  font-weight: 600;
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #c8c9cc;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
